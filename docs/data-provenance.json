@@ -1,0 +1,32 @@
+{
+  "source": "개인 학습지의 창작 연습문제.json",
+  "sourceSha256": "f5df089cd3c761a3abd0f5784fd7520ae57ed3472ac2d9b1b06e5a0d709b0d75",
+  "total": 391,
+  "micro": 319,
+  "checkpoint": 72,
+  "retainedFields": [
+    "id",
+    "topic",
+    "prompt",
+    "answers",
+    "code",
+    "explanation",
+    "hint",
+    "mode",
+    "kind",
+    "unitId",
+    "unitTitle",
+    "supplement"
+  ],
+  "excluded": [
+    "refs",
+    "sources",
+    "source_paths",
+    "actual",
+    "기출 원문",
+    "PDF",
+    "기출 빈도 통계",
+    "개인 학습 기록",
+    "계정 정보"
+  ]
+}

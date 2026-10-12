@@ -1,0 +1,6288 @@
+[
+  {
+    "id": "WB-C-01",
+    "topic": "c",
+    "prompt": "다음 C 코드의 출력은?",
+    "answers": [
+      "3 5 5"
+    ],
+    "code": "int x=3;\nint a=x++;\nint b=++x;\nprintf(\"%d %d %d\", a,b,x);",
+    "explanation": "후위는 기존 값 3을 a에 넣고 x=4. 전위는 x=5로 만든 뒤 b=5.",
+    "hint": "a, b, x를 별도 칸에 적으세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-01",
+    "unitTitle": "값 넣기와 증가"
+  },
+  {
+    "id": "WB-C-02",
+    "topic": "c",
+    "prompt": "다음 C 코드의 출력은?",
+    "answers": [
+      "3.0 3.5"
+    ],
+    "code": "printf(\"%.1f %.1f\", (double)(7/2), (double)7/2);",
+    "explanation": "왼쪽은 정수 나눗셈 3 뒤에 변환. 오른쪽은 실수로 바꾼 뒤 나눗셈.",
+    "hint": "형변환이 나눗셈보다 먼저인지 보세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-02",
+    "unitTitle": "정수 나눗셈"
+  },
+  {
+    "id": "WB-C-03",
+    "topic": "c",
+    "prompt": "다음 C 코드의 출력은?",
+    "answers": [
+      "5 8"
+    ],
+    "code": "int i,s=0;\nfor(i=0;i<5;i++){\n  if(i==2) continue;\n  s+=i;\n}\nprintf(\"%d %d\",i,s);",
+    "explanation": "2는 더하지 않고, 마지막 증감으로 i=5가 된 뒤 종료. 합은 0+1+3+4=8.",
+    "hint": "continue 뒤에도 for의 증감식은 실행됩니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-03",
+    "unitTitle": "반복과 건너뛰기"
+  },
+  {
+    "id": "WB-C-04",
+    "topic": "c",
+    "prompt": "다음 C 코드의 출력은?",
+    "answers": [
+      "BC"
+    ],
+    "code": "int x=2;\nswitch(x){\n case 1: printf(\"A\");\n case 2: printf(\"B\");\n case 3: printf(\"C\"); break;\n}",
+    "explanation": "case 2부터 들어가 break까지 그대로 진행합니다. case 3도 실행됩니다.",
+    "hint": "break가 어디 있는지 확인하세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-04",
+    "unitTitle": "switch와 break"
+  },
+  {
+    "id": "WB-C-05",
+    "topic": "c",
+    "prompt": "다음 C 코드의 출력은?",
+    "answers": [
+      "0"
+    ],
+    "code": "int x=0;\nif(0 && ++x) x=9;\nprintf(\"%d\",x);",
+    "explanation": "&&는 왼쪽이 거짓이면 오른쪽을 실행하지 않습니다. x는 0 그대로.",
+    "hint": "단락 평가입니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-05",
+    "unitTitle": "논리와 단락 평가"
+  },
+  {
+    "id": "WB-C-06",
+    "topic": "c",
+    "prompt": "다음 비트 연산 결과를 공백으로 구분하세요.",
+    "answers": [
+      "1 6"
+    ],
+    "code": "printf(\"%d %d\", 5 & 3, 5 ^ 3);",
+    "explanation": "0101 AND 0011 = 0001. XOR는 다른 비트가 1이므로 0110.",
+    "hint": "^는 거듭제곱이 아닙니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-06",
+    "unitTitle": "비트 연산"
+  },
+  {
+    "id": "WB-C-07",
+    "topic": "c",
+    "prompt": "f(4)의 반환값은?",
+    "answers": [
+      "24"
+    ],
+    "code": "int f(int n){\n if(n<=1) return 1;\n return n*f(n-1);\n}",
+    "explanation": "4×f(3), 3×f(2), 2×f(1), f(1)=1. 복귀하며 곱합니다.",
+    "hint": "종료 조건부터 표시하세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-07",
+    "unitTitle": "재귀 반환값"
+  },
+  {
+    "id": "WB-C-08",
+    "topic": "c",
+    "prompt": "show(3)의 출력은?",
+    "answers": [
+      "321123"
+    ],
+    "code": "void show(int n){\n if(n==0) return;\n printf(\"%d\",n);\n show(n-1);\n printf(\"%d\",n);\n}",
+    "explanation": "내려가며 321, 호출에서 복귀하며 123.",
+    "hint": "재귀 호출 뒤의 출력도 실행됩니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-C-08",
+    "unitTitle": "재귀 출력 순서"
+  },
+  {
+    "id": "WB-POINTER-01",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "20 20"
+    ],
+    "code": "int a[]={10,20,30};\nint *p=a;\nprintf(\"%d %d\",p[1],*(a+1));",
+    "explanation": "p[1]과 *(a+1)은 모두 두 번째 원소.",
+    "hint": "첫 인덱스는 0.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-01",
+    "unitTitle": "배열 첫 칸"
+  },
+  {
+    "id": "WB-POINTER-02",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "11 20"
+    ],
+    "code": "int a[]={10,20};\nint *p=a;\n(*p)++;\np++;\nprintf(\"%d %d\",a[0],*p);",
+    "explanation": "(*p)++는 첫 원소의 값을 증가. p++는 다음 원소로 이동.",
+    "hint": "괄호가 있는 *p와 p 자체를 구별하세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-02",
+    "unitTitle": "값 증가와 주소 이동"
+  },
+  {
+    "id": "WB-POINTER-03",
+    "topic": "pointer",
+    "prompt": "표준 헤더가 포함되었다고 할 때 출력은?",
+    "answers": [
+      "4 3"
+    ],
+    "code": "char s[]=\"CAT\";\nprintf(\"%zu %zu\",sizeof(s),strlen(s));",
+    "explanation": "sizeof는 배열의 종료 문자 포함, strlen은 종료 문자 앞까지.",
+    "hint": "문자열 끝에 보이지 않는 한 칸.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-03",
+    "unitTitle": "문자열 종료 칸"
+  },
+  {
+    "id": "WB-POINTER-04",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "AT"
+    ],
+    "code": "char s[]=\"CAT\";\nprintf(\"%s\",s+1);",
+    "explanation": "%s는 전달된 주소부터 종료 문자 전까지 출력.",
+    "hint": "s+1은 두 번째 문자 주소.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-04",
+    "unitTitle": "문자와 문자열 출력"
+  },
+  {
+    "id": "WB-POINTER-05",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "9"
+    ],
+    "code": "void g(int *p){ *p=9; }\n// main 내부\nint n=3; g(&n);\nprintf(\"%d\",n);",
+    "explanation": "주소값을 복사해 전달하고 *p로 원본 n을 수정합니다.",
+    "hint": "p가 가리키는 대상이 n입니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-05",
+    "unitTitle": "주소로 원본 바꾸기"
+  },
+  {
+    "id": "WB-POINTER-06",
+    "topic": "pointer",
+    "prompt": "구조체 포인터 p로 멤버 n에 접근하는 빈칸 전체는?",
+    "answers": [
+      "p->n",
+      "(*p).n"
+    ],
+    "code": "struct Item { int n; } v={4};\nstruct Item *p=&v;\nprintf(\"%d\", /* 빈칸 */);",
+    "explanation": "구조체 변수는 점, 구조체 포인터는 화살표로 멤버에 접근합니다.",
+    "hint": "포인터용 멤버 접근 연산자.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-06",
+    "unitTitle": "구조체 멤버"
+  },
+  {
+    "id": "WB-POINTER-07",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "6"
+    ],
+    "code": "int m[2][3]={{1,2,3},{4,5,6}};\nprintf(\"%d\",*(*(m+1)+2));",
+    "explanation": "m+1은 두 번째 행, 그 행에서 +2는 세 번째 원소.",
+    "hint": "행부터, 그다음 열.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-07",
+    "unitTitle": "2차원 배열"
+  },
+  {
+    "id": "WB-POINTER-08",
+    "topic": "pointer",
+    "prompt": "다음 코드의 출력은?",
+    "answers": [
+      "7"
+    ],
+    "code": "int n=4;\nint *p=&n;\nint **pp=&p;\n**pp += 3;\nprintf(\"%d\",n);",
+    "explanation": "pp→p→n. **pp를 바꾸면 n이 바뀝니다.",
+    "hint": "화살표를 두 번 따라가세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-POINTER-08",
+    "unitTitle": "이중 포인터"
+  },
+  {
+    "id": "WB-JAVA-01",
+    "topic": "java",
+    "prompt": "다음 Java 출력 두 줄을 그대로 입력하세요.",
+    "answers": [
+      "2\n10"
+    ],
+    "code": "class A { int x=2; int f(){return x+1;} }\nclass B extends A { int x=5; int f(){return x*2;} }\n// main 내부\nA p=new B();\nSystem.out.println(p.x);\nSystem.out.println(p.f());",
+    "explanation": "필드는 A 선언 타입 기준, 오버라이딩 메서드는 실제 B 객체 기준.",
+    "hint": "필드와 메서드의 선택 규칙이 다릅니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-01",
+    "unitTitle": "선언 타입과 실제 객체"
+  },
+  {
+    "id": "WB-JAVA-02",
+    "topic": "java",
+    "prompt": "이름은 같지만 매개변수 목록이 다른 메서드를 정의하는 것은?",
+    "answers": [
+      "오버로딩",
+      "overloading"
+    ],
+    "code": "",
+    "explanation": "오버라이딩은 상속받은 메서드를 재정의하는 것. 반환형만 바꾸면 오버로딩이 아닙니다.",
+    "hint": "loading과 riding을 구별.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-02",
+    "unitTitle": "오버로딩과 오버라이딩"
+  },
+  {
+    "id": "WB-JAVA-03",
+    "topic": "java",
+    "prompt": "출력 두 줄을 그대로 입력하세요.",
+    "answers": [
+      "3A\nA12"
+    ],
+    "code": "System.out.println(1+2+\"A\");\nSystem.out.println(\"A\"+1+2);",
+    "explanation": "왼쪽부터 평가하므로 1+2는 먼저 3. 문자열이 먼저 나오면 이어 붙입니다.",
+    "hint": "+의 왼쪽 결과가 문자열인지 보세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-03",
+    "unitTitle": "문자열 더하기"
+  },
+  {
+    "id": "WB-JAVA-04",
+    "topic": "java",
+    "prompt": "다음 코드 실행 뒤 b[0]은?",
+    "answers": [
+      "8"
+    ],
+    "code": "static void change(int[] a){\n a[0]=8; a=new int[]{99};\n}\n// main 내부\nint[] b={2}; change(b);",
+    "explanation": "같은 배열의 원소는 바뀌지만 a의 재대입은 b에 영향을 주지 않습니다.",
+    "hint": "참조값도 복사해서 전달됩니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-04",
+    "unitTitle": "배열 참조 전달"
+  },
+  {
+    "id": "WB-JAVA-05",
+    "topic": "java",
+    "prompt": "test()의 반환값은?",
+    "answers": [
+      "1"
+    ],
+    "code": "int test(){\n int x=1;\n try { return x; }\n finally { x=2; }\n}",
+    "explanation": "return에서 정수값 1을 먼저 확정하고 finally가 실행됩니다.",
+    "hint": "finally가 x를 바꿔도 이미 정해진 정수 반환값은 그대로.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-05",
+    "unitTitle": "return과 finally"
+  },
+  {
+    "id": "WB-JAVA-06",
+    "topic": "java",
+    "prompt": "다음 Java 프로그램의 출력은?",
+    "answers": [
+      "A2"
+    ],
+    "code": "class Main {\n static int x=f();\n static int f(){System.out.print(\"A\");return 1;}\n static {x++;}\n public static void main(String[] args){\n  System.out.print(x);\n }\n}",
+    "explanation": "클래스 초기화 시 f()가 A 출력 후 x=1. static 블록에서 2가 되고 main 진입.",
+    "hint": "main 전에 static 초기화.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-06",
+    "unitTitle": "static 초기화"
+  },
+  {
+    "id": "WB-JAVA-07",
+    "topic": "java",
+    "prompt": "String 객체 a와 b의 내용을 비교하는 빈칸은?",
+    "answers": [
+      "equals"
+    ],
+    "code": "a.____(b)",
+    "explanation": "참조형 ==는 같은 객체인지 검사. String.equals는 문자열 내용을 비교합니다.",
+    "hint": "문자열 내용 비교 메서드.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-07",
+    "unitTitle": "문자열 내용 비교"
+  },
+  {
+    "id": "WB-JAVA-08",
+    "topic": "java",
+    "prompt": "다음 Java 코드의 출력은?",
+    "answers": [
+      "3"
+    ],
+    "code": "class A { int f(){return 3;} }\nclass B extends A {\n int f(){return 10;}\n int g(){return super.f();}\n}\n// main 내부\nSystem.out.print(new B().g());",
+    "explanation": "super.f()는 부모 A의 구현을 호출합니다.",
+    "hint": "super가 붙으면 부모 구현.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-JAVA-08",
+    "unitTitle": "super"
+  },
+  {
+    "id": "WB-PYTHON-01",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "[1, 3, 5]"
+    ],
+    "code": "print(list(range(1,6,2)))",
+    "explanation": "range의 끝값 6은 제외. 1부터 2씩 증가.",
+    "hint": "끝 제외.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-01",
+    "unitTitle": "range"
+  },
+  {
+    "id": "WB-PYTHON-02",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "BCD"
+    ],
+    "code": "print(\"ABCDE\"[1:4])",
+    "explanation": "인덱스 1,2,3. 끝 인덱스 4는 제외.",
+    "hint": "0부터 시작하고 끝은 빼세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-02",
+    "unitTitle": "슬라이스"
+  },
+  {
+    "id": "WB-PYTHON-03",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "-4 1"
+    ],
+    "code": "print(-7//2, -7%2)",
+    "explanation": "//는 음의 무한대 방향 내림. -7=(-4)×2+1.",
+    "hint": "C의 0 방향 절삭과 다릅니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-03",
+    "unitTitle": "나눗셈과 내림"
+  },
+  {
+    "id": "WB-PYTHON-04",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "[9, 2] [1, 2]"
+    ],
+    "code": "a=[1,2]\nb=a\nc=a[:]\nb[0]=9\nprint(a,c)",
+    "explanation": "b는 a와 같은 리스트, c는 별도의 얕은 복사.",
+    "hint": "이름 두 개와 복사본 하나.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-04",
+    "unitTitle": "리스트 공유와 복사"
+  },
+  {
+    "id": "WB-PYTHON-05",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "None"
+    ],
+    "code": "a=[3,1,2]\nprint(a.sort())",
+    "explanation": "sort는 원본을 정렬하고 None을 반환. sorted는 새 리스트를 반환.",
+    "hint": "정렬된 리스트가 반환되는 메서드인가요?",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-05",
+    "unitTitle": "sort와 sorted"
+  },
+  {
+    "id": "WB-PYTHON-06",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "none"
+    ],
+    "code": "d={\"name\":\"Kim\"}\nprint(d.get(\"grade\",\"none\"))",
+    "explanation": "기본값으로 지정한 문자열 \"none\"이 출력됩니다. None과 다릅니다.",
+    "hint": "따옴표 안의 대소문자를 그대로.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-06",
+    "unitTitle": "dict 기본값"
+  },
+  {
+    "id": "WB-PYTHON-07",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "1"
+    ],
+    "code": "d={1:\"A\",True:\"B\",1.0:\"C\"}\nprint(len(d))",
+    "explanation": "1, True, 1.0은 딕셔너리에서 같은 키로 취급되어 값을 덮어씁니다.",
+    "hint": "세 키를 서로 비교하면 모두 같습니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-07",
+    "unitTitle": "같은 딕셔너리 키"
+  },
+  {
+    "id": "WB-PYTHON-08",
+    "topic": "python",
+    "prompt": "다음 출력은?",
+    "answers": [
+      "[(1, 2, 3), (1, 2)]"
+    ],
+    "code": "t=(1,2)\na=[t,t]\na[0]+=(3,)\nprint(a)",
+    "explanation": "튜플은 불변. 새 튜플을 만들어 a[0]만 교체합니다.",
+    "hint": "리스트의 원소 위치가 가리키는 튜플이 바뀝니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-PYTHON-08",
+    "unitTitle": "튜플"
+  },
+  {
+    "id": "WB-SQL-01",
+    "topic": "sql",
+    "prompt": "갱신문 빈칸에 들어갈 키워드는?",
+    "answers": [
+      "SET"
+    ],
+    "code": "UPDATE Student ____ grade=3 WHERE id=1;",
+    "explanation": "UPDATE 테이블 SET 열=값 WHERE 조건.",
+    "hint": "데이터를 새 값으로 설정합니다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-01",
+    "unitTitle": "UPDATE 문장"
+  },
+  {
+    "id": "WB-SQL-02",
+    "topic": "sql",
+    "prompt": "중복 행을 제거하는 SELECT 키워드는?",
+    "answers": [
+      "DISTINCT"
+    ],
+    "code": "SELECT ____ dept FROM Student;",
+    "explanation": "SELECT DISTINCT는 선택한 열들의 조합이 같은 결과를 중복 제거.",
+    "hint": "UNIQUE 제약조건과 구별.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-02",
+    "unitTitle": "DISTINCT"
+  },
+  {
+    "id": "WB-SQL-03",
+    "topic": "sql",
+    "prompt": "그룹의 집계값을 조건으로 거르는 절은?",
+    "answers": [
+      "HAVING"
+    ],
+    "code": "",
+    "explanation": "WHERE는 그룹화 전 행, HAVING은 그룹화 후 그룹을 거릅니다.",
+    "hint": "GROUP BY 뒤.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-03",
+    "unitTitle": "WHERE와 HAVING"
+  },
+  {
+    "id": "WB-SQL-04",
+    "topic": "sql",
+    "prompt": "x가 10,20,NULL,20인 4행일 때 세 결과는? 공백으로 구분하세요.",
+    "answers": [
+      "4 3 2"
+    ],
+    "code": "COUNT(*) / COUNT(x) / COUNT(DISTINCT x)",
+    "explanation": "*는 모든 행, 열은 NULL 제외, DISTINCT 열은 중복도 제거.",
+    "hint": "NULL과 중복을 따로 처리하세요.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-04",
+    "unitTitle": "COUNT와 NULL"
+  },
+  {
+    "id": "WB-SQL-05",
+    "topic": "sql",
+    "prompt": "BETWEEN 10 AND 20은 10과 20을 포함하는가? 예/아니오",
+    "answers": [
+      "예",
+      "네",
+      "포함",
+      "둘 다 포함"
+    ],
+    "code": "",
+    "explanation": "BETWEEN의 양 끝값은 포함됩니다.",
+    "hint": "이상, 이하.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-05",
+    "unitTitle": "BETWEEN과 범위"
+  },
+  {
+    "id": "WB-SQL-06",
+    "topic": "sql",
+    "prompt": "NULL인지 검사하는 빈칸은?",
+    "answers": [
+      "IS"
+    ],
+    "code": "WHERE x ____ NULL",
+    "explanation": "NULL은 일반적인 = 비교가 아닌 IS NULL로 검사합니다.",
+    "hint": "x = NULL은 의도한 검사가 아닙니다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-06",
+    "unitTitle": "NULL 검사"
+  },
+  {
+    "id": "WB-SQL-07",
+    "topic": "sql",
+    "prompt": "권한 부여의 빈칸 세 단어를 순서대로 쓰세요.",
+    "answers": [
+      "GRANT ON TO"
+    ],
+    "code": "____ SELECT ____ Student ____ user1;",
+    "explanation": "GRANT 권한 ON 대상 TO 사용자. 회수는 REVOKE ... FROM.",
+    "hint": "줄 때 TO, 뺏을 때 FROM.",
+    "mode": "keywords",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-07",
+    "unitTitle": "권한 주기와 회수"
+  },
+  {
+    "id": "WB-SQL-08",
+    "topic": "sql",
+    "prompt": "score의 허용 범위를 제한하는 빈칸은?",
+    "answers": [
+      "CHECK"
+    ],
+    "code": "score INT ____ (score BETWEEN 0 AND 100)",
+    "explanation": "CHECK는 조건 제약입니다. NULL까지 막으려면 별도의 NOT NULL도 고려.",
+    "hint": "값이 조건을 만족하는지 확인.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-SQL-08",
+    "unitTitle": "제약조건"
+  },
+  {
+    "id": "WB-DB-01",
+    "topic": "db",
+    "prompt": "행 5개, 열 3개의 릴레이션. 카디널리티와 디그리를 순서대로 쓰세요.",
+    "answers": [
+      "5 3"
+    ],
+    "code": "",
+    "explanation": "카디널리티는 튜플 수, 디그리는 속성 수.",
+    "hint": "카=행, 디=열.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-DB-01",
+    "unitTitle": "행과 열"
+  },
+  {
+    "id": "WB-DB-02",
+    "topic": "db",
+    "prompt": "유일성과 최소성을 모두 만족하는 키는?",
+    "answers": [
+      "후보키",
+      "candidate key"
+    ],
+    "code": "",
+    "explanation": "슈퍼키는 유일성만 필요, 후보키는 불필요한 속성을 더 뺄 수 없습니다.",
+    "hint": "기본키로 선택할 수 있는 후보.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-02",
+    "unitTitle": "후보키와 최소성"
+  },
+  {
+    "id": "WB-DB-03",
+    "topic": "db",
+    "prompt": "다른 릴레이션의 키를 참조하는 키는?",
+    "answers": [
+      "외래키",
+      "foreign key"
+    ],
+    "code": "",
+    "explanation": "외래키는 참조 관계를 표현합니다. 기본키와 역할이 다릅니다.",
+    "hint": "Foreign.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-03",
+    "unitTitle": "기본키와 외래키"
+  },
+  {
+    "id": "WB-DB-04",
+    "topic": "db",
+    "prompt": "사용자 관점 / 전체 논리 구조 / 물리 저장 구조. 스키마 이름 세 개를 순서대로.",
+    "answers": [
+      "외부 개념 내부",
+      "외부스키마 개념스키마 내부스키마"
+    ],
+    "code": "",
+    "explanation": "사용자별 외부, 통합된 논리 구조 개념, 저장 관점 내부.",
+    "hint": "밖에서 전체를 거쳐 안으로.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-04",
+    "unitTitle": "스키마 세 관점"
+  },
+  {
+    "id": "WB-DB-05",
+    "topic": "db",
+    "prompt": "부분 함수 종속을 제거한 정규형은?",
+    "answers": [
+      "2NF",
+      "제2정규형",
+      "2정규형"
+    ],
+    "code": "",
+    "explanation": "1NF를 만족한 상태에서 후보키 일부에 대한 비주요 속성의 종속을 제거.",
+    "hint": "원·부·이 순서.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-05",
+    "unitTitle": "1NF와 부분 종속"
+  },
+  {
+    "id": "WB-DB-06",
+    "topic": "db",
+    "prompt": "이행 함수 종속 제거와 연결되는 정규형은?",
+    "answers": [
+      "3NF",
+      "제3정규형",
+      "3정규형"
+    ],
+    "code": "",
+    "explanation": "키→비키 속성→다른 비키 속성의 이행 종속을 제거하는 기본 유형.",
+    "hint": "부분 다음 단계.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-06",
+    "unitTitle": "이행 종속"
+  },
+  {
+    "id": "WB-DB-07",
+    "topic": "db",
+    "prompt": "트랜잭션의 전부 수행 또는 전부 취소 특성은?",
+    "answers": [
+      "원자성",
+      "atomicity"
+    ],
+    "code": "",
+    "explanation": "일부만 반영하는 일을 막는 all-or-nothing 특성.",
+    "hint": "ACID의 A.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-07",
+    "unitTitle": "ACID 앞 두 글자"
+  },
+  {
+    "id": "WB-DB-08",
+    "topic": "db",
+    "prompt": "COMMIT이 끝난 결과가 장애 후에도 보존되는 특성은?",
+    "answers": [
+      "지속성",
+      "영속성",
+      "durability"
+    ],
+    "code": "",
+    "explanation": "원자성은 전부/전무, 지속성은 성공한 결과의 보존.",
+    "hint": "ACID의 D.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-DB-08",
+    "unitTitle": "ACID 뒤 두 글자"
+  },
+  {
+    "id": "WB-NETWORK-01",
+    "topic": "network",
+    "prompt": "OSI에서 프레임·MAC·인접 노드 전달과 연결되는 계층은?",
+    "answers": [
+      "데이터 링크",
+      "데이터 링크 계층",
+      "data link layer",
+      "2계층"
+    ],
+    "code": "",
+    "explanation": "네트워크 계층은 패킷·IP·라우팅입니다.",
+    "hint": "물 다음의 2계층.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-01",
+    "unitTitle": "계층과 전달 단위"
+  },
+  {
+    "id": "WB-NETWORK-02",
+    "topic": "network",
+    "prompt": "IPv4 주소에 대응하는 로컬 MAC 주소를 알아내는 프로토콜은?",
+    "answers": [
+      "ARP"
+    ],
+    "code": "",
+    "explanation": "DNS는 이름→IP, ARP는 IPv4→MAC.",
+    "hint": "Address Resolution.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-02",
+    "unitTitle": "DNS와 ARP"
+  },
+  {
+    "id": "WB-NETWORK-03",
+    "topic": "network",
+    "prompt": "ping의 Echo Request/Reply와 관련된 프로토콜은?",
+    "answers": [
+      "ICMP"
+    ],
+    "code": "",
+    "explanation": "네트워크 오류·진단 메시지에 사용. 포트 번호를 사용하는 TCP/UDP와 구별.",
+    "hint": "Internet Control Message.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-03",
+    "unitTitle": "진단과 관리"
+  },
+  {
+    "id": "WB-NETWORK-04",
+    "topic": "network",
+    "prompt": "HTTPS, SSH, IMAP 기본 포트를 순서대로 쓰세요.",
+    "answers": [
+      "443 22 143"
+    ],
+    "code": "",
+    "explanation": "웹 암호화 443, 보안 원격 접속 22, IMAP 143.",
+    "hint": "FTP21, SSH22, Telnet23.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-04",
+    "unitTitle": "서비스 포트"
+  },
+  {
+    "id": "WB-NETWORK-05",
+    "topic": "network",
+    "prompt": "IPv4 DHCP 서버와 클라이언트의 UDP 포트를 순서대로 쓰세요.",
+    "answers": [
+      "67 68"
+    ],
+    "code": "",
+    "explanation": "서버 67, 클라이언트 68. 서로 바꿔 쓰지 마세요.",
+    "hint": "서버가 앞 번호.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-05",
+    "unitTitle": "DHCP"
+  },
+  {
+    "id": "WB-NETWORK-06",
+    "topic": "network",
+    "prompt": "거리 벡터·Bellman-Ford·최대 유효 15홉인 라우팅 프로토콜은?",
+    "answers": [
+      "RIP"
+    ],
+    "code": "",
+    "explanation": "16홉은 도달 불가를 뜻합니다. OSPF는 링크 상태.",
+    "hint": "세 글자.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-06",
+    "unitTitle": "RIP와 OSPF"
+  },
+  {
+    "id": "WB-NETWORK-07",
+    "topic": "network",
+    "prompt": "192.168.10.77/26의 네트워크 주소는?",
+    "answers": [
+      "192.168.10.64"
+    ],
+    "code": "",
+    "explanation": "블록 크기 64. 77은 64~127 구간이므로 시작 주소는 .64.",
+    "hint": "0,64,128,192 중 어느 구간인가요?",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-07",
+    "unitTitle": "서브넷 작은 계산"
+  },
+  {
+    "id": "WB-NETWORK-08",
+    "topic": "network",
+    "prompt": "오류가 난 프레임부터 뒤의 미확인 프레임들도 재전송하는 ARQ는?",
+    "answers": [
+      "Go-Back-N",
+      "Go Back N",
+      "GBN"
+    ],
+    "code": "",
+    "explanation": "Selective Repeat는 필요한 프레임만 선택 재전송합니다.",
+    "hint": "뒤로 돌아가 여러 개를 다시 보냅니다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-NETWORK-08",
+    "unitTitle": "ARQ 재전송"
+  },
+  {
+    "id": "WB-TEST-01",
+    "topic": "test",
+    "prompt": "명세·입력·출력에 기반하고 내부 코드를 몰라도 가능한 테스트는?",
+    "answers": [
+      "블랙박스",
+      "블랙박스 테스트",
+      "black box",
+      "black box testing"
+    ],
+    "code": "",
+    "explanation": "화이트박스는 내부 코드·구조에 기반합니다.",
+    "hint": "상자 안을 안 봅니다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-01",
+    "unitTitle": "블랙박스와 화이트박스"
+  },
+  {
+    "id": "WB-TEST-02",
+    "topic": "test",
+    "prompt": "실행하지 않고 코드·문서를 검토하는 테스트는?",
+    "answers": [
+      "정적 테스트",
+      "정적",
+      "static testing"
+    ],
+    "code": "",
+    "explanation": "실행 여부로 나누는 정적/동적 분류입니다.",
+    "hint": "실행하지 않는다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-02",
+    "unitTitle": "정적과 동적"
+  },
+  {
+    "id": "WB-TEST-03",
+    "topic": "test",
+    "prompt": "하향식 통합에서 아직 없는 하위 모듈을 대신하는 것은?",
+    "answers": [
+      "스텁",
+      "stub"
+    ],
+    "code": "",
+    "explanation": "드라이버는 상향식에서 상위 호출자를 대신합니다.",
+    "hint": "아래가 없으면 스텁.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-03",
+    "unitTitle": "스텁과 드라이버"
+  },
+  {
+    "id": "WB-TEST-04",
+    "topic": "test",
+    "prompt": "단위 다음으로 모듈 사이 상호작용을 검사하는 테스트는?",
+    "answers": [
+      "통합 테스트",
+      "통합",
+      "integration test",
+      "integration testing"
+    ],
+    "code": "",
+    "explanation": "단위→통합→시스템→인수 순입니다.",
+    "hint": "붙였을 때 오류가 있는지.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-04",
+    "unitTitle": "테스트 네 수준"
+  },
+  {
+    "id": "WB-TEST-05",
+    "topic": "test",
+    "prompt": "사용자가 원하는 제품인지, 실제 요구에 맞는지 확인하는 영문 용어는?",
+    "answers": [
+      "Validation"
+    ],
+    "code": "",
+    "explanation": "Verification은 명세대로 만들었는지 검증.",
+    "hint": "원하는 제품인가?",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-05",
+    "unitTitle": "검증과 확인"
+  },
+  {
+    "id": "WB-TEST-06",
+    "topic": "test",
+    "prompt": "개발자 환경에서 사용자와 개발자가 함께 하는 인수 테스트는?",
+    "answers": [
+      "알파",
+      "알파 테스트",
+      "alpha",
+      "alpha testing"
+    ],
+    "code": "",
+    "explanation": "베타는 사용자 실제 환경.",
+    "hint": "그리스 문자 첫 번째.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-06",
+    "unitTitle": "알파와 베타"
+  },
+  {
+    "id": "WB-TEST-07",
+    "topic": "test",
+    "prompt": "유효 정수 1~100일 때 0,1,2,99,100,101을 고르는 기법은?",
+    "answers": [
+      "경계값 분석",
+      "경계값",
+      "boundary value analysis",
+      "BVA"
+    ],
+    "code": "",
+    "explanation": "경계 바로 아래·경계·바로 위를 확인합니다. 동등 분할은 각 집합 대표값.",
+    "hint": "끝 근처에 집중.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-07",
+    "unitTitle": "경계값과 동등 분할"
+  },
+  {
+    "id": "WB-TEST-08",
+    "topic": "test",
+    "prompt": "수정 후 기존 기능이 깨졌는지 다시 확인하는 테스트는?",
+    "answers": [
+      "회귀 테스트",
+      "회귀",
+      "regression test",
+      "regression testing"
+    ],
+    "code": "",
+    "explanation": "고친 결함만 재확인하는 것에 더해 기존 기능의 부작용을 찾습니다.",
+    "hint": "regression.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-TEST-08",
+    "unitTitle": "회귀와 재확인"
+  },
+  {
+    "id": "WB-OS-01",
+    "topic": "os",
+    "prompt": "시간 할당량만큼 번갈아 CPU를 쓰는 선점 스케줄링은?",
+    "answers": [
+      "RR",
+      "Round Robin",
+      "라운드 로빈"
+    ],
+    "code": "",
+    "explanation": "실행이 끝나지 않으면 준비 큐 뒤로 돌아갑니다.",
+    "hint": "원을 돌며 차례대로.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-01",
+    "unitTitle": "스케줄링 이름"
+  },
+  {
+    "id": "WB-OS-02",
+    "topic": "os",
+    "prompt": "HRN에서 대기 6, 서비스 3이면 응답비는?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "(6+3)/3=3. 비율이 큰 작업이 우선.",
+    "hint": "(대기+서비스)/서비스.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-OS-02",
+    "unitTitle": "HRN 한 칸씩"
+  },
+  {
+    "id": "WB-OS-03",
+    "topic": "os",
+    "prompt": "도착 2, 완료 10, 실행 5인 작업의 반환시간과 대기시간은?",
+    "answers": [
+      "8 3"
+    ],
+    "code": "",
+    "explanation": "반환 10-2=8, 대기 8-5=3. 기본 CPU 스케줄링 가정.",
+    "hint": "완료시각 자체가 반환시간은 아닙니다.",
+    "mode": "output",
+    "kind": "checkpoint",
+    "unitId": "U-OS-03",
+    "unitTitle": "반환과 대기시간"
+  },
+  {
+    "id": "WB-OS-04",
+    "topic": "os",
+    "prompt": "교착상태 네 조건 중, 자원을 가진 채 다른 자원을 기다리는 조건은?",
+    "answers": [
+      "점유와 대기",
+      "점유 및 대기",
+      "hold and wait"
+    ],
+    "code": "",
+    "explanation": "나머지는 상호 배제, 비선점, 순환 대기.",
+    "hint": "가지고 있으면서 기다립니다.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-04",
+    "unitTitle": "교착 조건"
+  },
+  {
+    "id": "WB-OS-05",
+    "topic": "os",
+    "prompt": "후입선출 LIFO 자료구조는?",
+    "answers": [
+      "스택",
+      "stack"
+    ],
+    "code": "",
+    "explanation": "큐는 먼저 들어온 것이 먼저 나가는 FIFO.",
+    "hint": "함수 호출·재귀에 사용.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-05",
+    "unitTitle": "스택과 큐"
+  },
+  {
+    "id": "WB-OS-06",
+    "topic": "os",
+    "prompt": "아이콘과 메뉴를 마우스로 조작하는 인터페이스의 약어는?",
+    "answers": [
+      "GUI"
+    ],
+    "code": "",
+    "explanation": "CLI는 명령어, WUI는 웹, GUI는 그래픽.",
+    "hint": "Graphical User Interface.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-06",
+    "unitTitle": "인터페이스"
+  },
+  {
+    "id": "WB-OS-07",
+    "topic": "os",
+    "prompt": "소프트웨어 산출물의 변경과 버전·이력을 관리하는 것은?",
+    "answers": [
+      "형상 관리",
+      "형상관리",
+      "configuration management"
+    ],
+    "code": "",
+    "explanation": "단순 백업보다 넓은 개념이며 변경 통제와 이력 관리 등을 포함.",
+    "hint": "산출물의 상태를 관리.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-07",
+    "unitTitle": "형상관리와 배포"
+  },
+  {
+    "id": "WB-OS-08",
+    "topic": "os",
+    "prompt": "웹 트래픽에서 SQL Injection·XSS를 탐지·차단하는 방화벽 약어는?",
+    "answers": [
+      "WAF"
+    ],
+    "code": "",
+    "explanation": "Web Application Firewall. 일반적인 네트워크 방화벽과 구별.",
+    "hint": "웹 애플리케이션 방화벽.",
+    "mode": "term",
+    "kind": "checkpoint",
+    "unitId": "U-OS-08",
+    "unitTitle": "웹 공격과 방어"
+  },
+  {
+    "id": "MP-C-01-01",
+    "topic": "c",
+    "prompt": "int x=3;에서 x에 들어 있는 값은?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "=는 오른쪽 값을 왼쪽 변수에 넣는다.",
+    "hint": "=는 오른쪽 값을 왼쪽 변수에 넣는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-01",
+    "unitTitle": "값 넣기와 증가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-01-02",
+    "topic": "c",
+    "prompt": "후위 증가 뒤 a의 값은?",
+    "answers": [
+      "3"
+    ],
+    "code": "int x=3;\nint a=x++;",
+    "explanation": "x++는 먼저 기존 값을 사용한다.",
+    "hint": "x++는 먼저 기존 값을 사용한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-01",
+    "unitTitle": "값 넣기와 증가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-01-03",
+    "topic": "c",
+    "prompt": "전위 증가 뒤 b의 값은?",
+    "answers": [
+      "4"
+    ],
+    "code": "int x=3;\nint b=++x;",
+    "explanation": "++x는 먼저 1 증가시키고 사용한다.",
+    "hint": "++x는 먼저 1 증가시키고 사용한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-01",
+    "unitTitle": "값 넣기와 증가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-02-01",
+    "topic": "c",
+    "prompt": "C에서 정수 7 / 2의 값은?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "정수끼리 나누면 정수 몫을 얻는다.",
+    "hint": "정수끼리 나누면 정수 몫을 얻는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-02",
+    "unitTitle": "정수 나눗셈",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-02-02",
+    "topic": "c",
+    "prompt": "C에서 7 % 2의 값은?",
+    "answers": [
+      "1"
+    ],
+    "code": "",
+    "explanation": "%는 나눗셈의 나머지다.",
+    "hint": "%는 나눗셈의 나머지다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-02",
+    "unitTitle": "정수 나눗셈",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-02-03",
+    "topic": "c",
+    "prompt": "나누기 전에 실수로 바꾸면 값은?",
+    "answers": [
+      "3.5"
+    ],
+    "code": "(double)7 / 2",
+    "explanation": "실수가 나눗셈에 참여하면 소수 부분을 유지한다.",
+    "hint": "실수가 나눗셈에 참여하면 소수 부분을 유지한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-02",
+    "unitTitle": "정수 나눗셈",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-03-01",
+    "topic": "c",
+    "prompt": "본문에 처음 들어갈 때 i는?",
+    "answers": [
+      "0"
+    ],
+    "code": "for (int i=0; i<3; i++) { /* 본문 */ }",
+    "explanation": "초기화부터 보고 조건을 검사한다.",
+    "hint": "초기화부터 보고 조건을 검사한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-03",
+    "unitTitle": "반복과 건너뛰기",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-03-02",
+    "topic": "c",
+    "prompt": "본문은 총 몇 번 실행될까요?",
+    "answers": [
+      "3"
+    ],
+    "code": "for (int i=0; i<3; i++) { /* 본문 */ }",
+    "explanation": "i=0,1,2일 때만 조건이 참이다.",
+    "hint": "i=0,1,2일 때만 조건이 참이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-03",
+    "unitTitle": "반복과 건너뛰기",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-03-03",
+    "topic": "c",
+    "prompt": "for에서 continue를 만나도 증감식 i++를 실행할까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "for (int i=0; i<3; i++) { /* 본문 */ }",
+    "explanation": "continue는 남은 본문을 건너뛰고 증감식으로 간다.",
+    "hint": "continue는 남은 본문을 건너뛰고 증감식으로 간다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-03",
+    "unitTitle": "반복과 건너뛰기",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-04-01",
+    "topic": "c",
+    "prompt": "x=2라면 어느 case에서 시작할까요? 번호만.",
+    "answers": [
+      "2"
+    ],
+    "code": "switch(x) { case 1: break; case 2: break; }",
+    "explanation": "일치하는 case부터 실행한다.",
+    "hint": "일치하는 case부터 실행한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-04",
+    "unitTitle": "switch와 break",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-04-02",
+    "topic": "c",
+    "prompt": "case 2에 break가 없으면 case 3도 실행할까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "switch(x) { case 1: break; case 2: break; }",
+    "explanation": "다음 case의 조건을 다시 검사하지 않고 이어 실행한다.",
+    "hint": "다음 case의 조건을 다시 검사하지 않고 이어 실행한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-04",
+    "unitTitle": "switch와 break",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-04-03",
+    "topic": "c",
+    "prompt": "switch를 빠져나오는 키워드는?",
+    "answers": [
+      "break"
+    ],
+    "code": "switch(x) { case 1: break; case 2: break; }",
+    "explanation": "break는 가장 가까운 반복문 또는 switch를 끝낸다.",
+    "hint": "break는 가장 가까운 반복문 또는 switch를 끝낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-04",
+    "unitTitle": "switch와 break",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-05-01",
+    "topic": "c",
+    "prompt": "C의 조건식에서 0은 참/거짓 중 무엇일까요?",
+    "answers": [
+      "거짓"
+    ],
+    "code": "",
+    "explanation": "0은 거짓이고 0 이외는 참이다.",
+    "hint": "0은 거짓이고 0 이외는 참이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-05",
+    "unitTitle": "논리와 단락 평가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-05-02",
+    "topic": "c",
+    "prompt": "둘 다 참이어야 참인 논리 연산자는? 논리 AND / 논리 OR",
+    "answers": [
+      "논리 AND",
+      "&&"
+    ],
+    "code": "",
+    "explanation": "논리 AND는 양쪽 모두 참이어야 한다.",
+    "hint": "논리 AND는 양쪽 모두 참이어야 한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-05",
+    "unitTitle": "논리와 단락 평가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-05-03",
+    "topic": "c",
+    "prompt": "아래 코드 뒤 x는?",
+    "answers": [
+      "0"
+    ],
+    "code": "int x=0;\n0 && ++x;",
+    "explanation": "&&의 왼쪽이 거짓이면 오른쪽을 실행하지 않는다.",
+    "hint": "&&의 왼쪽이 거짓이면 오른쪽을 실행하지 않는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-05",
+    "unitTitle": "논리와 단락 평가",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-06-01",
+    "topic": "c",
+    "prompt": "C에서 ^는 XOR/거듭제곱 중 무엇일까요?",
+    "answers": [
+      "XOR"
+    ],
+    "code": "",
+    "explanation": "^는 비트별 배타적 논리합이다.",
+    "hint": "^는 비트별 배타적 논리합이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-06",
+    "unitTitle": "비트 연산",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-06-02",
+    "topic": "c",
+    "prompt": "한 비트씩 AND: 1 & 0은?",
+    "answers": [
+      "0"
+    ],
+    "code": "",
+    "explanation": "AND는 두 비트가 모두 1일 때만 1이다.",
+    "hint": "AND는 두 비트가 모두 1일 때만 1이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-06",
+    "unitTitle": "비트 연산",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-06-03",
+    "topic": "c",
+    "prompt": "한 비트씩 XOR: 1 ^ 0은?",
+    "answers": [
+      "1"
+    ],
+    "code": "",
+    "explanation": "XOR는 두 비트가 다르면 1이다.",
+    "hint": "XOR는 두 비트가 다르면 1이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-06",
+    "unitTitle": "비트 연산",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-07-01",
+    "topic": "c",
+    "prompt": "이 함수의 f(1)은?",
+    "answers": [
+      "1"
+    ],
+    "code": "int f(int n){ if(n<=1) return 1; return n*f(n-1); }",
+    "explanation": "종료 조건에서는 곧바로 1을 반환한다.",
+    "hint": "종료 조건에서는 곧바로 1을 반환한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-07",
+    "unitTitle": "재귀 반환값",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-07-02",
+    "topic": "c",
+    "prompt": "f(2)는 2×f(1)입니다. 값은?",
+    "answers": [
+      "2"
+    ],
+    "code": "int f(int n){ if(n<=1) return 1; return n*f(n-1); }",
+    "explanation": "가장 안쪽의 반환값부터 채운다.",
+    "hint": "가장 안쪽의 반환값부터 채운다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-07",
+    "unitTitle": "재귀 반환값",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-07-03",
+    "topic": "c",
+    "prompt": "f(3)는 3×f(2)입니다. 값은?",
+    "answers": [
+      "6"
+    ],
+    "code": "int f(int n){ if(n<=1) return 1; return n*f(n-1); }",
+    "explanation": "각 호출의 반환값을 바깥 호출에 넣는다.",
+    "hint": "각 호출의 반환값을 바깥 호출에 넣는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-07",
+    "unitTitle": "재귀 반환값",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-08-01",
+    "topic": "c",
+    "prompt": "show(1)이 처음 출력하는 숫자는?",
+    "answers": [
+      "1"
+    ],
+    "code": "void show(int n){ if(n==0) return; printf(\"%d\",n); show(n-1); printf(\"%d\",n); }",
+    "explanation": "재귀 호출 앞의 출력부터 실행한다.",
+    "hint": "재귀 호출 앞의 출력부터 실행한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-08",
+    "unitTitle": "재귀 출력 순서",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-08-02",
+    "topic": "c",
+    "prompt": "show(0)은 숫자를 출력할까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "void show(int n){ if(n==0) return; printf(\"%d\",n); show(n-1); printf(\"%d\",n); }",
+    "explanation": "종료 조건에서 return하므로 출력문까지 가지 않는다.",
+    "hint": "종료 조건에서 return하므로 출력문까지 가지 않는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-08",
+    "unitTitle": "재귀 출력 순서",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-08-03",
+    "topic": "c",
+    "prompt": "위 show(1)의 전체 출력은?",
+    "answers": [
+      "11"
+    ],
+    "code": "void show(int n){ if(n==0) return; printf(\"%d\",n); show(n-1); printf(\"%d\",n); }",
+    "explanation": "1을 출력하고 show(0)에서 돌아온 뒤 1을 다시 출력한다.",
+    "hint": "1을 출력하고 show(0)에서 돌아온 뒤 1을 다시 출력한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-08",
+    "unitTitle": "재귀 출력 순서",
+    "supplement": false
+  },
+  {
+    "id": "MP-C-X01-01",
+    "topic": "c",
+    "prompt": "값이 같은지 비교하는 연산자는? = / ==",
+    "answers": [
+      "=="
+    ],
+    "code": "",
+    "explanation": "=는 대입이고 ==는 비교다.",
+    "hint": "=는 대입이고 ==는 비교다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X01-02",
+    "topic": "c",
+    "prompt": "2+3*4의 값은?",
+    "answers": [
+      "14"
+    ],
+    "code": "",
+    "explanation": "곱셈이 덧셈보다 먼저다.",
+    "hint": "곱셈이 덧셈보다 먼저다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X01-03",
+    "topic": "c",
+    "prompt": "1<<3의 값은?",
+    "answers": [
+      "8"
+    ],
+    "code": "",
+    "explanation": "이 작은 비음수 예에서는 왼쪽으로 세 비트 이동한다.",
+    "hint": "이 작은 비음수 예에서는 왼쪽으로 세 비트 이동한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X01-04",
+    "topic": "c",
+    "prompt": "정수 출력의 서식은? %d / %s",
+    "answers": [
+      "%d"
+    ],
+    "code": "",
+    "explanation": "%d는 정수, %s는 문자열 출력이다.",
+    "hint": "%d는 정수, %s는 문자열 출력이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X01-05",
+    "topic": "c",
+    "prompt": "%.2f로 7.0을 출력하면? 출력 문자열 그대로.",
+    "answers": [
+      "7.00"
+    ],
+    "code": "",
+    "explanation": "소수 두 자리를 출력한다.",
+    "hint": "소수 두 자리를 출력한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X01-06",
+    "topic": "c",
+    "prompt": "C의 i++ + ++i에는 이식 가능한 단일 결과가 있나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "같은 변수의 순서 보장 없는 부작용은 정상 출력 문제처럼 계산하지 않는다.",
+    "hint": "같은 변수의 순서 보장 없는 부작용은 정상 출력 문제처럼 계산하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-X01",
+    "unitTitle": "대입·우선순위·출력",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X02-01",
+    "topic": "c",
+    "prompt": "값을 복사해 받은 x만 바꾸면 호출자 n도 바뀔까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "void f(int x){x=9;}\nint n=3; // f(n)을 호출",
+    "explanation": "C는 값을 복사해 전달한다.",
+    "hint": "C는 값을 복사해 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-X02",
+    "unitTitle": "함수와 계산 패턴",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X02-02",
+    "topic": "c",
+    "prompt": "누적합의 시작값은 보통 0/1 중 무엇일까요?",
+    "answers": [
+      "0"
+    ],
+    "code": "void f(int x){x=9;}\nint n=3; // f(n)을 호출",
+    "explanation": "더하기 누적의 시작값은 0이다.",
+    "hint": "더하기 누적의 시작값은 0이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X02",
+    "unitTitle": "함수와 계산 패턴",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X02-03",
+    "topic": "c",
+    "prompt": "누적곱의 시작값은 보통 0/1 중 무엇일까요?",
+    "answers": [
+      "1"
+    ],
+    "code": "void f(int x){x=9;}\nint n=3; // f(n)을 호출",
+    "explanation": "0으로 시작하면 곱이 계속 0이다.",
+    "hint": "0으로 시작하면 곱이 계속 0이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X02",
+    "unitTitle": "함수와 계산 패턴",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X02-04",
+    "topic": "c",
+    "prompt": "gcd(18,12)의 값은?",
+    "answers": [
+      "6"
+    ],
+    "code": "void f(int x){x=9;}\nint n=3; // f(n)을 호출",
+    "explanation": "18과 12를 모두 나누는 가장 큰 수는 6이다.",
+    "hint": "18과 12를 모두 나누는 가장 큰 수는 6이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-C-X02",
+    "unitTitle": "함수와 계산 패턴",
+    "supplement": true
+  },
+  {
+    "id": "MP-C-X02-05",
+    "topic": "c",
+    "prompt": "static 지역변수는 호출이 끝나면 값을 잃나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "void f(int x){x=9;}\nint n=3; // f(n)을 호출",
+    "explanation": "static 지역변수는 호출 사이에도 값을 유지한다.",
+    "hint": "static 지역변수는 호출 사이에도 값을 유지한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-C-X02",
+    "unitTitle": "함수와 계산 패턴",
+    "supplement": true
+  },
+  {
+    "id": "MP-POINTER-01-01",
+    "topic": "pointer",
+    "prompt": "a[0]의 값은?",
+    "answers": [
+      "10"
+    ],
+    "code": "int a[]={10,20,30};",
+    "explanation": "배열 인덱스는 0부터 시작한다.",
+    "hint": "배열 인덱스는 0부터 시작한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-01",
+    "unitTitle": "배열 첫 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-01-02",
+    "topic": "pointer",
+    "prompt": "a[1]의 값은?",
+    "answers": [
+      "20"
+    ],
+    "code": "int a[]={10,20,30};",
+    "explanation": "인덱스 1은 두 번째 원소다.",
+    "hint": "인덱스 1은 두 번째 원소다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-01",
+    "unitTitle": "배열 첫 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-01-03",
+    "topic": "pointer",
+    "prompt": "*(a+1)의 값은?",
+    "answers": [
+      "20"
+    ],
+    "code": "int a[]={10,20,30};",
+    "explanation": "다음 원소 주소를 따라가 그 값을 읽는다.",
+    "hint": "다음 원소 주소를 따라가 그 값을 읽는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-01",
+    "unitTitle": "배열 첫 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-02-01",
+    "topic": "pointer",
+    "prompt": "p가 a[0]을 가리킬 때 *p의 값은?",
+    "answers": [
+      "10"
+    ],
+    "code": "int a[]={10,20}; int *p=a;",
+    "explanation": "*p는 p가 가리키는 칸의 값이다.",
+    "hint": "*p는 p가 가리키는 칸의 값이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-02",
+    "unitTitle": "값 증가와 주소 이동",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-02-02",
+    "topic": "pointer",
+    "prompt": "(*p)++ 뒤 a[0]은?",
+    "answers": [
+      "11"
+    ],
+    "code": "int a[]={10,20}; int *p=a;\n(*p)++;",
+    "explanation": "괄호 안 *p의 값이 증가하고 주소는 그대로다.",
+    "hint": "괄호 안 *p의 값이 증가하고 주소는 그대로다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-02",
+    "unitTitle": "값 증가와 주소 이동",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-02-03",
+    "topic": "pointer",
+    "prompt": "p++ 뒤 *p는?",
+    "answers": [
+      "20"
+    ],
+    "code": "int a[]={10,20}; int *p=a;\np++;",
+    "explanation": "포인터가 다음 원소로 이동한다.",
+    "hint": "포인터가 다음 원소로 이동한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-02",
+    "unitTitle": "값 증가와 주소 이동",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-03-01",
+    "topic": "pointer",
+    "prompt": "문자열 끝에 넣는 종료 문자는? \\0 / 숫자 0",
+    "answers": [
+      "\\0"
+    ],
+    "code": "",
+    "explanation": "문자열에는 널 문자인 종료 표시가 필요하다.",
+    "hint": "문자열에는 널 문자인 종료 표시가 필요하다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-03",
+    "unitTitle": "문자열 종료 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-03-02",
+    "topic": "pointer",
+    "prompt": "CAT의 문자열 길이 strlen(s)는?",
+    "answers": [
+      "3"
+    ],
+    "code": "char s[]=\"CAT\";",
+    "explanation": "strlen은 종료 문자 앞까지 센다.",
+    "hint": "strlen은 종료 문자 앞까지 센다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-03",
+    "unitTitle": "문자열 종료 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-03-03",
+    "topic": "pointer",
+    "prompt": "위 배열의 sizeof(s)는?",
+    "answers": [
+      "4"
+    ],
+    "code": "char s[]=\"CAT\";",
+    "explanation": "배열에는 C,A,T와 종료 문자까지 네 칸이 있다.",
+    "hint": "배열에는 C,A,T와 종료 문자까지 네 칸이 있다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-03",
+    "unitTitle": "문자열 종료 칸",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-04-01",
+    "topic": "pointer",
+    "prompt": "s[0]은 어떤 문자일까요?",
+    "answers": [
+      "C"
+    ],
+    "code": "char s[]=\"CAT\";",
+    "explanation": "첫 문자의 인덱스는 0이다.",
+    "hint": "첫 문자의 인덱스는 0이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-04",
+    "unitTitle": "문자와 문자열 출력",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-04-02",
+    "topic": "pointer",
+    "prompt": "s[1]은 어떤 문자일까요?",
+    "answers": [
+      "A"
+    ],
+    "code": "char s[]=\"CAT\";",
+    "explanation": "두 번째 문자는 A다.",
+    "hint": "두 번째 문자는 A다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-04",
+    "unitTitle": "문자와 문자열 출력",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-04-03",
+    "topic": "pointer",
+    "prompt": "출력은?",
+    "answers": [
+      "AT"
+    ],
+    "code": "char s[]=\"CAT\";\nprintf(\"%s\",s+1);",
+    "explanation": "%s는 전달된 주소부터 종료 문자 전까지 출력한다.",
+    "hint": "%s는 전달된 주소부터 종료 문자 전까지 출력한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-04",
+    "unitTitle": "문자와 문자열 출력",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-05-01",
+    "topic": "pointer",
+    "prompt": "n의 주소를 얻는 식은? &n / *n",
+    "answers": [
+      "&n"
+    ],
+    "code": "",
+    "explanation": "&는 변수의 주소를 얻는다.",
+    "hint": "&는 변수의 주소를 얻는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-05",
+    "unitTitle": "주소로 원본 바꾸기",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-05-02",
+    "topic": "pointer",
+    "prompt": "*p=9는 p의 주소/가리키는 값 중 무엇을 바꿀까요?",
+    "answers": [
+      "가리키는 값"
+    ],
+    "code": "",
+    "explanation": "*p를 대입 대상으로 쓰면 주소가 가리키는 칸을 바꾼다.",
+    "hint": "*p를 대입 대상으로 쓰면 주소가 가리키는 칸을 바꾼다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-05",
+    "unitTitle": "주소로 원본 바꾸기",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-05-03",
+    "topic": "pointer",
+    "prompt": "아래 코드 뒤 n은?",
+    "answers": [
+      "9"
+    ],
+    "code": "int n=3; int *p=&n;\n*p=9;",
+    "explanation": "p가 n을 가리키므로 *p의 대입은 n을 바꾼다.",
+    "hint": "p가 n을 가리키므로 *p의 대입은 n을 바꾼다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-05",
+    "unitTitle": "주소로 원본 바꾸기",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-06-01",
+    "topic": "pointer",
+    "prompt": "구조체 변수 v의 n에 접근하는 식은? v.n / v->n",
+    "answers": [
+      "v.n"
+    ],
+    "code": "",
+    "explanation": "구조체 변수는 점 연산자를 쓴다.",
+    "hint": "구조체 변수는 점 연산자를 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-06",
+    "unitTitle": "구조체 멤버",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-06-02",
+    "topic": "pointer",
+    "prompt": "구조체 포인터 p의 n에 접근하는 식은? p.n / p->n",
+    "answers": [
+      "p->n"
+    ],
+    "code": "",
+    "explanation": "구조체 포인터는 화살표 연산자를 쓴다.",
+    "hint": "구조체 포인터는 화살표 연산자를 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-06",
+    "unitTitle": "구조체 멤버",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-06-03",
+    "topic": "pointer",
+    "prompt": "p->n과 같은 식의 빈칸은?",
+    "answers": [
+      "n"
+    ],
+    "code": "(*p).____",
+    "explanation": "(*p).n은 포인터를 따라간 구조체의 n이다.",
+    "hint": "(*p).n은 포인터를 따라간 구조체의 n이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-06",
+    "unitTitle": "구조체 멤버",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-07-01",
+    "topic": "pointer",
+    "prompt": "m[1][0]은?",
+    "answers": [
+      "4"
+    ],
+    "code": "int m[2][3]={{1,2,3},{4,5,6}};",
+    "explanation": "첫 인덱스는 행, 다음은 열이다.",
+    "hint": "첫 인덱스는 행, 다음은 열이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-07",
+    "unitTitle": "2차원 배열",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-07-02",
+    "topic": "pointer",
+    "prompt": "m[1][2]는?",
+    "answers": [
+      "6"
+    ],
+    "code": "int m[2][3]={{1,2,3},{4,5,6}};",
+    "explanation": "두 번째 행의 세 번째 원소를 읽는다.",
+    "hint": "두 번째 행의 세 번째 원소를 읽는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-07",
+    "unitTitle": "2차원 배열",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-07-03",
+    "topic": "pointer",
+    "prompt": "m+1은 한 원소/한 행 중 얼마나 이동할까요?",
+    "answers": [
+      "한 행"
+    ],
+    "code": "int m[2][3]={{1,2,3},{4,5,6}};",
+    "explanation": "2차원 배열의 행 포인터는 다음 행으로 이동한다.",
+    "hint": "2차원 배열의 행 포인터는 다음 행으로 이동한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-07",
+    "unitTitle": "2차원 배열",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-08-01",
+    "topic": "pointer",
+    "prompt": "이 연결에서 p가 가리키는 변수는?",
+    "answers": [
+      "n"
+    ],
+    "code": "int n=4; int *p=&n; int **pp=&p;",
+    "explanation": "&n을 저장한 p는 n의 주소를 가진다.",
+    "hint": "&n을 저장한 p는 n의 주소를 가진다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-08",
+    "unitTitle": "이중 포인터",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-08-02",
+    "topic": "pointer",
+    "prompt": "위 연결에서 pp가 가리키는 변수는?",
+    "answers": [
+      "p"
+    ],
+    "code": "int n=4; int *p=&n; int **pp=&p;",
+    "explanation": "pp에는 p 자체의 주소가 들어 있다.",
+    "hint": "pp에는 p 자체의 주소가 들어 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-08",
+    "unitTitle": "이중 포인터",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-08-03",
+    "topic": "pointer",
+    "prompt": "위 연결에서 **pp의 값은?",
+    "answers": [
+      "4"
+    ],
+    "code": "int n=4; int *p=&n; int **pp=&p;",
+    "explanation": "pp에서 p로, p에서 n으로 두 번 따라간다.",
+    "hint": "pp에서 p로, p에서 n으로 두 번 따라간다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-08",
+    "unitTitle": "이중 포인터",
+    "supplement": false
+  },
+  {
+    "id": "MP-POINTER-X01-01",
+    "topic": "pointer",
+    "prompt": "p+1은 언제나 1바이트 이동일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "포인터가 가리키는 자료형의 원소 크기만큼 이동한다.",
+    "hint": "포인터가 가리키는 자료형의 원소 크기만큼 이동한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-X01",
+    "unitTitle": "포인터와 배열 안전",
+    "supplement": true
+  },
+  {
+    "id": "MP-POINTER-X01-02",
+    "topic": "pointer",
+    "prompt": "*p++에서 먼저 결합되는 연산자는? * / ++",
+    "answers": [
+      "++"
+    ],
+    "code": "",
+    "explanation": "*p++는 *(p++)로 해석한다.",
+    "hint": "*p++는 *(p++)로 해석한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-X01",
+    "unitTitle": "포인터와 배열 안전",
+    "supplement": true
+  },
+  {
+    "id": "MP-POINTER-X01-03",
+    "topic": "pointer",
+    "prompt": "길이 3인 배열의 마지막 유효 인덱스는?",
+    "answers": [
+      "2"
+    ],
+    "code": "",
+    "explanation": "유효 인덱스는 0,1,2다.",
+    "hint": "유효 인덱스는 0,1,2다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-POINTER-X01",
+    "unitTitle": "포인터와 배열 안전",
+    "supplement": true
+  },
+  {
+    "id": "MP-POINTER-X01-04",
+    "topic": "pointer",
+    "prompt": "char s[3]=\"CAT\"에 종료 문자 칸이 있나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "세 문자로 칸을 모두 써서 널 종료가 없다.",
+    "hint": "세 문자로 칸을 모두 써서 널 종료가 없다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-X01",
+    "unitTitle": "포인터와 배열 안전",
+    "supplement": true
+  },
+  {
+    "id": "MP-POINTER-X01-05",
+    "topic": "pointer",
+    "prompt": "sizeof(포인터)는 문자열 길이일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "포인터 자체의 크기와 문자열 길이는 다르다.",
+    "hint": "포인터 자체의 크기와 문자열 길이는 다르다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-POINTER-X01",
+    "unitTitle": "포인터와 배열 안전",
+    "supplement": true
+  },
+  {
+    "id": "MP-JAVA-01-01",
+    "topic": "java",
+    "prompt": "p의 선언 타입은 A/B 중 무엇일까요?",
+    "answers": [
+      "A"
+    ],
+    "code": "A p=new B();",
+    "explanation": "참조변수 앞의 타입이 선언 타입이다.",
+    "hint": "참조변수 앞의 타입이 선언 타입이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-01",
+    "unitTitle": "선언 타입과 실제 객체",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-01-02",
+    "topic": "java",
+    "prompt": "위 코드에서 생성한 실제 객체의 클래스는?",
+    "answers": [
+      "B"
+    ],
+    "code": "A p=new B();",
+    "explanation": "new B()가 B 객체를 만든다.",
+    "hint": "new B()가 B 객체를 만든다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-01",
+    "unitTitle": "선언 타입과 실제 객체",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-01-03",
+    "topic": "java",
+    "prompt": "오버라이딩된 인스턴스 메서드 선택은 선언 타입/실제 객체 중 무엇 기준일까요?",
+    "answers": [
+      "실제 객체"
+    ],
+    "code": "A p=new B();",
+    "explanation": "필드는 선언 타입, 오버라이딩 인스턴스 메서드는 실제 객체 기준이다.",
+    "hint": "필드는 선언 타입, 오버라이딩 인스턴스 메서드는 실제 객체 기준이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-01",
+    "unitTitle": "선언 타입과 실제 객체",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-02-01",
+    "topic": "java",
+    "prompt": "같은 이름에 매개변수 목록만 다른 메서드: 오버로딩/오버라이딩?",
+    "answers": [
+      "오버로딩"
+    ],
+    "code": "",
+    "explanation": "매개변수의 개수나 타입 등이 다르면 오버로딩이다.",
+    "hint": "매개변수의 개수나 타입 등이 다르면 오버로딩이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-02",
+    "unitTitle": "오버로딩과 오버라이딩",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-02-02",
+    "topic": "java",
+    "prompt": "부모의 메서드를 자식이 재정의: 오버로딩/오버라이딩?",
+    "answers": [
+      "오버라이딩"
+    ],
+    "code": "",
+    "explanation": "상속받은 메서드의 구현을 바꾼다.",
+    "hint": "상속받은 메서드의 구현을 바꾼다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-02",
+    "unitTitle": "오버로딩과 오버라이딩",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-02-03",
+    "topic": "java",
+    "prompt": "반환형만 바꾸면 오버로딩일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "반환형만 다른 메서드는 오버로딩이 성립하지 않는다.",
+    "hint": "반환형만 다른 메서드는 오버로딩이 성립하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-02",
+    "unitTitle": "오버로딩과 오버라이딩",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-03-01",
+    "topic": "java",
+    "prompt": "Java에서 1+2의 값은?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "두 정수끼리는 먼저 덧셈한다.",
+    "hint": "두 정수끼리는 먼저 덧셈한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-03",
+    "unitTitle": "문자열 더하기",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-03-02",
+    "topic": "java",
+    "prompt": "Java에서 1+2+\"A\"의 결과는? 따옴표 없이.",
+    "answers": [
+      "3A"
+    ],
+    "code": "",
+    "explanation": "왼쪽부터 3을 만든 뒤 문자열 A를 붙인다.",
+    "hint": "왼쪽부터 3을 만든 뒤 문자열 A를 붙인다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-03",
+    "unitTitle": "문자열 더하기",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-03-03",
+    "topic": "java",
+    "prompt": "Java에서 \"A\"+1+2의 결과는? 따옴표 없이.",
+    "answers": [
+      "A12"
+    ],
+    "code": "",
+    "explanation": "문자열로 시작하므로 숫자들을 차례로 붙인다.",
+    "hint": "문자열로 시작하므로 숫자들을 차례로 붙인다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-03",
+    "unitTitle": "문자열 더하기",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-04-01",
+    "topic": "java",
+    "prompt": "메서드 인수로 전달된 a와 b는 처음 같은 배열일까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "int[] b={2};\nint[] a=b; // 매개변수 a가 같은 배열을 참조하는 시작 상태",
+    "explanation": "Java는 참조값을 복사해 전달한다.",
+    "hint": "Java는 참조값을 복사해 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-04",
+    "unitTitle": "배열 참조 전달",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-04-02",
+    "topic": "java",
+    "prompt": "a[0]=8을 실행하면 같은 배열을 가리키는 b[0]은?",
+    "answers": [
+      "8"
+    ],
+    "code": "int[] b={2};\nint[] a=b; // 매개변수 a가 같은 배열을 참조하는 시작 상태",
+    "explanation": "공유하는 배열 원소를 수정한다.",
+    "hint": "공유하는 배열 원소를 수정한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-04",
+    "unitTitle": "배열 참조 전달",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-04-03",
+    "topic": "java",
+    "prompt": "a를 새 배열로 재대입하면 b도 새 배열로 바뀔까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "int[] b={2};\nint[] a=b; // 매개변수 a가 같은 배열을 참조하는 시작 상태",
+    "explanation": "a라는 매개변수만 새 참조값을 받는다.",
+    "hint": "a라는 매개변수만 새 참조값을 받는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-04",
+    "unitTitle": "배열 참조 전달",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-05-01",
+    "topic": "java",
+    "prompt": "finally 블록은 위 try에서 return해도 실행될까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "try { return 1; } finally { System.out.print(\"F\"); }",
+    "explanation": "정상적으로 try를 나갈 때 finally를 거친다.",
+    "hint": "정상적으로 try를 나갈 때 finally를 거친다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-05",
+    "unitTitle": "return과 finally",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-05-02",
+    "topic": "java",
+    "prompt": "지역 정수 x를 return할 때 반환값은 finally 전/후 언제 정해질까요?",
+    "answers": [
+      "전"
+    ],
+    "code": "try { return 1; } finally { System.out.print(\"F\"); }",
+    "explanation": "return 표현식의 정수값을 먼저 구한다.",
+    "hint": "return 표현식의 정수값을 먼저 구한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-05",
+    "unitTitle": "return과 finally",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-05-03",
+    "topic": "java",
+    "prompt": "아래 함수의 반환값은?",
+    "answers": [
+      "1"
+    ],
+    "code": "int f(){ int x=1; try {return x;} finally {x=2;} }",
+    "explanation": "finally가 지역 x를 바꿔도 이미 정한 정수 반환값은 1이다.",
+    "hint": "finally가 지역 x를 바꿔도 이미 정한 정수 반환값은 1이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-05",
+    "unitTitle": "return과 finally",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-06-01",
+    "topic": "java",
+    "prompt": "static 필드 초기화와 main 중 먼저인 것은?",
+    "answers": [
+      "static 필드 초기화"
+    ],
+    "code": "",
+    "explanation": "클래스 초기화가 main 실행 전에 진행된다.",
+    "hint": "클래스 초기화가 main 실행 전에 진행된다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-06",
+    "unitTitle": "static 초기화",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-06-02",
+    "topic": "java",
+    "prompt": "static 초기화 뒤 x는?",
+    "answers": [
+      "2"
+    ],
+    "code": "static int x=1;\nstatic { x++; }",
+    "explanation": "필드 초기화 뒤 static 블록이 소스 순서로 실행된다.",
+    "hint": "필드 초기화 뒤 static 블록이 소스 순서로 실행된다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-06",
+    "unitTitle": "static 초기화",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-06-03",
+    "topic": "java",
+    "prompt": "main 전에 x=2라면 System.out.print(x)의 출력은?",
+    "answers": [
+      "2"
+    ],
+    "code": "static int x=1;\nstatic { x++; }",
+    "explanation": "출력 시점의 값을 읽는다.",
+    "hint": "출력 시점의 값을 읽는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-06",
+    "unitTitle": "static 초기화",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-07-01",
+    "topic": "java",
+    "prompt": "String 내용을 비교하는 메서드는?",
+    "answers": [
+      "equals"
+    ],
+    "code": "",
+    "explanation": "String.equals는 문자열 내용을 비교한다.",
+    "hint": "String.equals는 문자열 내용을 비교한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-07",
+    "unitTitle": "문자열 내용 비교",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-07-02",
+    "topic": "java",
+    "prompt": "참조형의 ==는 내용/같은 객체 중 무엇을 비교할까요?",
+    "answers": [
+      "같은 객체"
+    ],
+    "code": "",
+    "explanation": "참조값이 동일한지 검사한다.",
+    "hint": "참조값이 동일한지 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-07",
+    "unitTitle": "문자열 내용 비교",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-07-03",
+    "topic": "java",
+    "prompt": "서로 다른 두 String 객체의 내용이 CAT이면 a.equals(b)는?",
+    "answers": [
+      "true"
+    ],
+    "code": "",
+    "explanation": "객체가 달라도 문자열 내용이 같으면 true다.",
+    "hint": "객체가 달라도 문자열 내용이 같으면 true다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-07",
+    "unitTitle": "문자열 내용 비교",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-08-01",
+    "topic": "java",
+    "prompt": "Java에서 부모 쪽 멤버에 접근하는 키워드는?",
+    "answers": [
+      "super"
+    ],
+    "code": "",
+    "explanation": "super는 부모 쪽 멤버나 생성자 접근에 사용한다.",
+    "hint": "super는 부모 쪽 멤버나 생성자 접근에 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-08",
+    "unitTitle": "super",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-08-02",
+    "topic": "java",
+    "prompt": "부모 f()가 3을 반환하면 super.f()의 값은?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "super.f()는 부모 구현을 호출한다.",
+    "hint": "super.f()는 부모 구현을 호출한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-JAVA-08",
+    "unitTitle": "super",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-08-03",
+    "topic": "java",
+    "prompt": "현재 객체를 가리키는 키워드는?",
+    "answers": [
+      "this"
+    ],
+    "code": "",
+    "explanation": "this는 현재 객체를 가리킨다.",
+    "hint": "this는 현재 객체를 가리킨다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-08",
+    "unitTitle": "super",
+    "supplement": false
+  },
+  {
+    "id": "MP-JAVA-X01-01",
+    "topic": "java",
+    "prompt": "생성자 이름은 무엇과 같을까요? 클래스/필드",
+    "answers": [
+      "클래스"
+    ],
+    "code": "",
+    "explanation": "생성자는 클래스와 이름이 같다.",
+    "hint": "생성자는 클래스와 이름이 같다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-X01",
+    "unitTitle": "생성자와 초기화",
+    "supplement": true
+  },
+  {
+    "id": "MP-JAVA-X01-02",
+    "topic": "java",
+    "prompt": "생성자에 void 반환형을 붙일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "생성자에는 반환형을 쓰지 않는다.",
+    "hint": "생성자에는 반환형을 쓰지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-X01",
+    "unitTitle": "생성자와 초기화",
+    "supplement": true
+  },
+  {
+    "id": "MP-JAVA-X01-03",
+    "topic": "java",
+    "prompt": "일반적인 객체 생성 과정에서 부모/자식 생성자 중 먼저인 것은?",
+    "answers": [
+      "부모"
+    ],
+    "code": "",
+    "explanation": "부모 생성자 실행을 먼저 거친다.",
+    "hint": "부모 생성자 실행을 먼저 거친다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-X01",
+    "unitTitle": "생성자와 초기화",
+    "supplement": true
+  },
+  {
+    "id": "MP-JAVA-X01-04",
+    "topic": "java",
+    "prompt": "static 메서드에도 오버라이딩 인스턴스 메서드의 동적 선택 규칙을 적용할까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "static 메서드 숨김과 인스턴스 메서드 오버라이딩은 다르다.",
+    "hint": "static 메서드 숨김과 인스턴스 메서드 오버라이딩은 다르다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-JAVA-X01",
+    "unitTitle": "생성자와 초기화",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-01-01",
+    "topic": "python",
+    "prompt": "range(3)의 첫 값은?",
+    "answers": [
+      "0"
+    ],
+    "code": "",
+    "explanation": "시작값을 생략하면 0부터 시작한다.",
+    "hint": "시작값을 생략하면 0부터 시작한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-01",
+    "unitTitle": "range",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-01-02",
+    "topic": "python",
+    "prompt": "range(3)에 3이 포함될까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "끝값 stop은 제외한다.",
+    "hint": "끝값 stop은 제외한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-01",
+    "unitTitle": "range",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-01-03",
+    "topic": "python",
+    "prompt": "range(1,6,2)의 다음 값들을 공백으로: 첫 값 1 다음은?",
+    "answers": [
+      "3 5"
+    ],
+    "code": "",
+    "explanation": "1에서 2씩 증가하며 6 전에 멈춘다.",
+    "hint": "1에서 2씩 증가하며 6 전에 멈춘다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-01",
+    "unitTitle": "range",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-02-01",
+    "topic": "python",
+    "prompt": "\"ABCDE\"[0]의 출력 문자는?",
+    "answers": [
+      "A"
+    ],
+    "code": "",
+    "explanation": "문자열 인덱스도 0부터 시작한다.",
+    "hint": "문자열 인덱스도 0부터 시작한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-02",
+    "unitTitle": "슬라이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-02-02",
+    "topic": "python",
+    "prompt": "\"ABCDE\"[1:4]에서 인덱스 4는 포함될까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "슬라이스의 끝 인덱스는 제외한다.",
+    "hint": "슬라이스의 끝 인덱스는 제외한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-02",
+    "unitTitle": "슬라이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-02-03",
+    "topic": "python",
+    "prompt": "출력은?",
+    "answers": [
+      "BC"
+    ],
+    "code": "print(\"ABCDE\"[1:3])",
+    "explanation": "인덱스 1과 2를 읽는다.",
+    "hint": "인덱스 1과 2를 읽는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-02",
+    "unitTitle": "슬라이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-03-01",
+    "topic": "python",
+    "prompt": "Python의 7 / 2는?",
+    "answers": [
+      "3.5"
+    ],
+    "code": "",
+    "explanation": "/는 일반 나눗셈이다.",
+    "hint": "/는 일반 나눗셈이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-03",
+    "unitTitle": "나눗셈과 내림",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-03-02",
+    "topic": "python",
+    "prompt": "Python의 7 // 2는?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "//는 몫을 음의 무한대 방향으로 내린다.",
+    "hint": "//는 몫을 음의 무한대 방향으로 내린다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-03",
+    "unitTitle": "나눗셈과 내림",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-03-03",
+    "topic": "python",
+    "prompt": "Python의 -7 // 2는?",
+    "answers": [
+      "-4"
+    ],
+    "code": "",
+    "explanation": "-3.5를 아래쪽 정수 -4로 내린다.",
+    "hint": "-3.5를 아래쪽 정수 -4로 내린다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-03",
+    "unitTitle": "나눗셈과 내림",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-04-01",
+    "topic": "python",
+    "prompt": "b=a는 새 리스트 복사/같은 리스트 공유 중 무엇일까요?",
+    "answers": [
+      "같은 리스트 공유"
+    ],
+    "code": "",
+    "explanation": "새 이름 b가 같은 리스트를 가리킨다.",
+    "hint": "새 이름 b가 같은 리스트를 가리킨다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-04",
+    "unitTitle": "리스트 공유와 복사",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-04-02",
+    "topic": "python",
+    "prompt": "아래 코드 뒤 a[0]은?",
+    "answers": [
+      "9"
+    ],
+    "code": "a=[1,2]; b=a\nb[0]=9",
+    "explanation": "a와 b가 같은 리스트를 가리킨다.",
+    "hint": "a와 b가 같은 리스트를 가리킨다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-04",
+    "unitTitle": "리스트 공유와 복사",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-04-03",
+    "topic": "python",
+    "prompt": "아래 코드 뒤 c[0]은?",
+    "answers": [
+      "1"
+    ],
+    "code": "a=[1,2]; c=a[:]\na[0]=9",
+    "explanation": "a[:]는 별도의 바깥 리스트를 만든다.",
+    "hint": "a[:]는 별도의 바깥 리스트를 만든다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-04",
+    "unitTitle": "리스트 공유와 복사",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-05-01",
+    "topic": "python",
+    "prompt": "a.sort()는 원본/새 리스트 중 무엇을 정렬할까요?",
+    "answers": [
+      "원본"
+    ],
+    "code": "",
+    "explanation": "sort는 리스트를 제자리에서 정렬한다.",
+    "hint": "sort는 리스트를 제자리에서 정렬한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-05",
+    "unitTitle": "sort와 sorted",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-05-02",
+    "topic": "python",
+    "prompt": "a.sort()의 반환값은?",
+    "answers": [
+      "None"
+    ],
+    "code": "",
+    "explanation": "정렬된 리스트를 반환하지 않는다.",
+    "hint": "정렬된 리스트를 반환하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-05",
+    "unitTitle": "sort와 sorted",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-05-03",
+    "topic": "python",
+    "prompt": "새 정렬 리스트를 반환하는 함수는? sort / sorted",
+    "answers": [
+      "sorted"
+    ],
+    "code": "",
+    "explanation": "sorted(a)는 새 정렬 결과를 반환한다.",
+    "hint": "sorted(a)는 새 정렬 결과를 반환한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-05",
+    "unitTitle": "sort와 sorted",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-06-01",
+    "topic": "python",
+    "prompt": "d에 grade가 있나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "d={\"name\":\"Kim\"}",
+    "explanation": "딕셔너리에는 name 키만 있다.",
+    "hint": "딕셔너리에는 name 키만 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-06",
+    "unitTitle": "dict 기본값",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-06-02",
+    "topic": "python",
+    "prompt": "키가 없을 때 d.get(\"grade\",\"none\")의 출력은?",
+    "answers": [
+      "none"
+    ],
+    "code": "d={\"name\":\"Kim\"}",
+    "explanation": "두 번째 인수로 준 문자열을 반환한다.",
+    "hint": "두 번째 인수로 준 문자열을 반환한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-06",
+    "unitTitle": "dict 기본값",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-06-03",
+    "topic": "python",
+    "prompt": "\"none\"과 None은 같은 값일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "d={\"name\":\"Kim\"}",
+    "explanation": "따옴표가 있는 문자열과 특별한 값 None은 다르다.",
+    "hint": "따옴표가 있는 문자열과 특별한 값 None은 다르다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-06",
+    "unitTitle": "dict 기본값",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-07-01",
+    "topic": "python",
+    "prompt": "Python에서 1 == True는?",
+    "answers": [
+      "True"
+    ],
+    "code": "",
+    "explanation": "숫자 1과 True는 같은 값으로 비교된다.",
+    "hint": "숫자 1과 True는 같은 값으로 비교된다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-07",
+    "unitTitle": "같은 딕셔너리 키",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-07-02",
+    "topic": "python",
+    "prompt": "Python에서 1 == 1.0은?",
+    "answers": [
+      "True"
+    ],
+    "code": "",
+    "explanation": "정수 1과 실수 1.0은 같은 값으로 비교된다.",
+    "hint": "정수 1과 실수 1.0은 같은 값으로 비교된다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-07",
+    "unitTitle": "같은 딕셔너리 키",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-07-03",
+    "topic": "python",
+    "prompt": "아래 딕셔너리의 키 개수는?",
+    "answers": [
+      "1"
+    ],
+    "code": "d={1:\"A\", True:\"B\", 1.0:\"C\"}",
+    "explanation": "서로 같은 키라서 뒤의 값이 앞의 값을 덮어쓴다.",
+    "hint": "서로 같은 키라서 뒤의 값이 앞의 값을 덮어쓴다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-07",
+    "unitTitle": "같은 딕셔너리 키",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-08-01",
+    "topic": "python",
+    "prompt": "튜플의 내용을 직접 변경할 수 있나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "튜플은 불변 자료형이다.",
+    "hint": "튜플은 불변 자료형이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-08",
+    "unitTitle": "튜플",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-08-02",
+    "topic": "python",
+    "prompt": "원소 한 개인 튜플은? (3) / (3,)",
+    "answers": [
+      "(3,)"
+    ],
+    "code": "",
+    "explanation": "쉼표가 있어야 한 원소 튜플이다.",
+    "hint": "쉼표가 있어야 한 원소 튜플이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-08",
+    "unitTitle": "튜플",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-08-03",
+    "topic": "python",
+    "prompt": "t=(1,2)일 때 t+(3,)의 결과는? 괄호 포함.",
+    "answers": [
+      "(1, 2, 3)"
+    ],
+    "code": "",
+    "explanation": "기존 튜플을 바꾸지 않고 새 튜플을 만든다.",
+    "hint": "기존 튜플을 바꾸지 않고 새 튜플을 만든다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-08",
+    "unitTitle": "튜플",
+    "supplement": false
+  },
+  {
+    "id": "MP-PYTHON-X01-01",
+    "topic": "python",
+    "prompt": "Python에서 빈 {}의 자료형은?",
+    "answers": [
+      "dict",
+      "딕셔너리"
+    ],
+    "code": "",
+    "explanation": "빈 중괄호는 딕셔너리다.",
+    "hint": "빈 중괄호는 딕셔너리다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-02",
+    "topic": "python",
+    "prompt": "빈 집합을 만드는 식은?",
+    "answers": [
+      "set()"
+    ],
+    "code": "",
+    "explanation": "빈 집합에는 set()을 사용한다.",
+    "hint": "빈 집합에는 set()을 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-03",
+    "topic": "python",
+    "prompt": "a[-1]은 첫/마지막 원소 중 무엇일까요?",
+    "answers": [
+      "마지막"
+    ],
+    "code": "",
+    "explanation": "음수 인덱스는 뒤에서 센다.",
+    "hint": "음수 인덱스는 뒤에서 센다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-04",
+    "topic": "python",
+    "prompt": "출력은?",
+    "answers": [
+      "CBA"
+    ],
+    "code": "print(\"ABC\"[::-1])",
+    "explanation": "step -1로 역방향을 읽는다.",
+    "hint": "step -1로 역방향을 읽는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-05",
+    "topic": "python",
+    "prompt": "Python의 거듭제곱 연산자는? ** / ^",
+    "answers": [
+      "**"
+    ],
+    "code": "print(\"ABC\"[::-1])",
+    "explanation": "^는 XOR다.",
+    "hint": "^는 XOR다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-06",
+    "topic": "python",
+    "prompt": "append([2,3])는 원소 하나/두 개를 추가할까요?",
+    "answers": [
+      "하나"
+    ],
+    "code": "print(\"ABC\"[::-1])",
+    "explanation": "리스트 [2,3] 자체를 한 원소로 추가한다.",
+    "hint": "리스트 [2,3] 자체를 한 원소로 추가한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-07",
+    "topic": "python",
+    "prompt": "a[:]는 내부 리스트까지 모두 새로 복사할까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "print(\"ABC\"[::-1])",
+    "explanation": "얕은 복사는 안쪽 객체를 공유한다.",
+    "hint": "얕은 복사는 안쪽 객체를 공유한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-PYTHON-X01-08",
+    "topic": "python",
+    "prompt": "print(1,2)의 기본 구분 문자는?",
+    "answers": [
+      "공백"
+    ],
+    "code": "print(\"ABC\"[::-1])",
+    "explanation": "기본 sep는 공백이고 end는 줄바꿈이다.",
+    "hint": "기본 sep는 공백이고 end는 줄바꿈이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-PYTHON-X01",
+    "unitTitle": "자료형·역방향·얕은 복사",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-01-01",
+    "topic": "sql",
+    "prompt": "기존 행의 값을 바꾸는 명령은? UPDATE / DELETE",
+    "answers": [
+      "UPDATE"
+    ],
+    "code": "",
+    "explanation": "UPDATE는 데이터를 갱신한다.",
+    "hint": "UPDATE는 데이터를 갱신한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-01",
+    "unitTitle": "UPDATE 문장",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-01-02",
+    "topic": "sql",
+    "prompt": "빈칸에 들어갈 키워드는?",
+    "answers": [
+      "SET"
+    ],
+    "code": "UPDATE Student ____ grade=3;",
+    "explanation": "UPDATE 뒤 SET으로 새 값을 지정한다.",
+    "hint": "UPDATE 뒤 SET으로 새 값을 지정한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-01",
+    "unitTitle": "UPDATE 문장",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-01-03",
+    "topic": "sql",
+    "prompt": "특정 행만 바꾸려고 붙이는 절은?",
+    "answers": [
+      "WHERE"
+    ],
+    "code": "UPDATE Student ____ grade=3;",
+    "explanation": "WHERE가 없으면 모든 행이 대상이다.",
+    "hint": "WHERE가 없으면 모든 행이 대상이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-01",
+    "unitTitle": "UPDATE 문장",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-02-01",
+    "topic": "sql",
+    "prompt": "dept가 A,A,B라면 서로 다른 값은 몇 개일까요?",
+    "answers": [
+      "2"
+    ],
+    "code": "",
+    "explanation": "A를 한 번만 세면 A와 B 두 값이다.",
+    "hint": "A를 한 번만 세면 A와 B 두 값이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-02",
+    "unitTitle": "DISTINCT",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-02-02",
+    "topic": "sql",
+    "prompt": "SELECT 결과의 중복을 없애는 키워드는?",
+    "answers": [
+      "DISTINCT"
+    ],
+    "code": "",
+    "explanation": "선택한 열들의 값 조합이 같은 결과를 제거한다.",
+    "hint": "선택한 열들의 값 조합이 같은 결과를 제거한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-02",
+    "unitTitle": "DISTINCT",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-02-03",
+    "topic": "sql",
+    "prompt": "SELECT DISTINCT dept에서 A,A,B의 출력 행 수는?",
+    "answers": [
+      "2"
+    ],
+    "code": "",
+    "explanation": "중복된 A를 한 번만 출력한다.",
+    "hint": "중복된 A를 한 번만 출력한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-02",
+    "unitTitle": "DISTINCT",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-03-01",
+    "topic": "sql",
+    "prompt": "그룹으로 묶기 전에 행을 거르는 절은?",
+    "answers": [
+      "WHERE"
+    ],
+    "code": "",
+    "explanation": "WHERE는 행 단위 조건이다.",
+    "hint": "WHERE는 행 단위 조건이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-03",
+    "unitTitle": "WHERE와 HAVING",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-03-02",
+    "topic": "sql",
+    "prompt": "같은 학과끼리 묶는 절은?",
+    "answers": [
+      "GROUP BY"
+    ],
+    "code": "",
+    "explanation": "GROUP BY로 집계할 그룹을 만든다.",
+    "hint": "GROUP BY로 집계할 그룹을 만든다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-03",
+    "unitTitle": "WHERE와 HAVING",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-03-03",
+    "topic": "sql",
+    "prompt": "집계 후 그룹을 거르는 절은?",
+    "answers": [
+      "HAVING"
+    ],
+    "code": "",
+    "explanation": "HAVING은 그룹의 집계값 조건을 지정한다.",
+    "hint": "HAVING은 그룹의 집계값 조건을 지정한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-03",
+    "unitTitle": "WHERE와 HAVING",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-04-01",
+    "topic": "sql",
+    "prompt": "10,20,NULL,20 네 행에서 COUNT(*)는?",
+    "answers": [
+      "4"
+    ],
+    "code": "",
+    "explanation": "COUNT(*)는 NULL이 있어도 행을 모두 센다.",
+    "hint": "COUNT(*)는 NULL이 있어도 행을 모두 센다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-04",
+    "unitTitle": "COUNT와 NULL",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-04-02",
+    "topic": "sql",
+    "prompt": "10,20,NULL,20에서 COUNT(x)는?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "COUNT(열)은 그 열의 NULL을 제외한다.",
+    "hint": "COUNT(열)은 그 열의 NULL을 제외한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-04",
+    "unitTitle": "COUNT와 NULL",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-04-03",
+    "topic": "sql",
+    "prompt": "10,20,NULL,20에서 COUNT(DISTINCT x)는?",
+    "answers": [
+      "2"
+    ],
+    "code": "",
+    "explanation": "NULL과 중복된 20을 제외하면 10,20이다.",
+    "hint": "NULL과 중복된 20을 제외하면 10,20이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-04",
+    "unitTitle": "COUNT와 NULL",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-05-01",
+    "topic": "sql",
+    "prompt": "BETWEEN 10 AND 20은 10을 포함할까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "",
+    "explanation": "시작값을 포함한다.",
+    "hint": "시작값을 포함한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-05",
+    "unitTitle": "BETWEEN과 범위",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-05-02",
+    "topic": "sql",
+    "prompt": "BETWEEN 10 AND 20은 20을 포함할까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "",
+    "explanation": "끝값도 포함한다.",
+    "hint": "끝값도 포함한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-05",
+    "unitTitle": "BETWEEN과 범위",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-05-03",
+    "topic": "sql",
+    "prompt": "BETWEEN 10 AND 20 조건에 21이 들어갈까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "이상·이하 범위 밖이다.",
+    "hint": "이상·이하 범위 밖이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-05",
+    "unitTitle": "BETWEEN과 범위",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-06-01",
+    "topic": "sql",
+    "prompt": "NULL인지 검사: x = NULL / x IS NULL",
+    "answers": [
+      "x IS NULL"
+    ],
+    "code": "",
+    "explanation": "NULL 검사는 IS NULL을 쓴다.",
+    "hint": "NULL 검사는 IS NULL을 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-06",
+    "unitTitle": "NULL 검사",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-06-02",
+    "topic": "sql",
+    "prompt": "NULL이 아닌지 검사하는 빈칸은?",
+    "answers": [
+      "NOT"
+    ],
+    "code": "WHERE x IS ____ NULL",
+    "explanation": "값이 있으면 IS NOT NULL로 검사한다.",
+    "hint": "값이 있으면 IS NOT NULL로 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-06",
+    "unitTitle": "NULL 검사",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-06-03",
+    "topic": "sql",
+    "prompt": "0과 NULL은 같은 의미일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "WHERE x IS ____ NULL",
+    "explanation": "0은 값이고 NULL은 값의 부재·미정 등을 나타낸다.",
+    "hint": "0은 값이고 NULL은 값의 부재·미정 등을 나타낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-06",
+    "unitTitle": "NULL 검사",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-07-01",
+    "topic": "sql",
+    "prompt": "권한을 주는 명령은?",
+    "answers": [
+      "GRANT"
+    ],
+    "code": "",
+    "explanation": "GRANT는 권한을 부여한다.",
+    "hint": "GRANT는 권한을 부여한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-07",
+    "unitTitle": "권한 주기와 회수",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-07-02",
+    "topic": "sql",
+    "prompt": "권한을 받는 사용자 앞의 키워드는?",
+    "answers": [
+      "TO"
+    ],
+    "code": "GRANT SELECT ON Student ____ user1;",
+    "explanation": "GRANT 권한 ON 대상 TO 사용자다.",
+    "hint": "GRANT 권한 ON 대상 TO 사용자다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-07",
+    "unitTitle": "권한 주기와 회수",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-07-03",
+    "topic": "sql",
+    "prompt": "권한을 회수하는 명령은?",
+    "answers": [
+      "REVOKE"
+    ],
+    "code": "GRANT SELECT ON Student ____ user1;",
+    "explanation": "회수할 사용자는 FROM 뒤에 쓴다.",
+    "hint": "회수할 사용자는 FROM 뒤에 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-07",
+    "unitTitle": "권한 주기와 회수",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-08-01",
+    "topic": "sql",
+    "prompt": "허용 값의 조건을 제한하는 키워드는?",
+    "answers": [
+      "CHECK"
+    ],
+    "code": "",
+    "explanation": "CHECK는 조건식으로 값의 제약을 지정한다.",
+    "hint": "CHECK는 조건식으로 값의 제약을 지정한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-08",
+    "unitTitle": "제약조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-08-02",
+    "topic": "sql",
+    "prompt": "NULL 입력을 막는 제약은?",
+    "answers": [
+      "NOT NULL"
+    ],
+    "code": "",
+    "explanation": "값을 반드시 넣도록 별도로 제약한다.",
+    "hint": "값을 반드시 넣도록 별도로 제약한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-08",
+    "unitTitle": "제약조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-08-03",
+    "topic": "sql",
+    "prompt": "CHECK만 붙이면 NULL도 반드시 막힐까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "UNKNOWN 처리 때문에 NOT NULL을 별도로 지정해야 할 수 있다.",
+    "hint": "UNKNOWN 처리 때문에 NOT NULL을 별도로 지정해야 할 수 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-08",
+    "unitTitle": "제약조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-SQL-X01-01",
+    "topic": "sql",
+    "prompt": "행을 추가하는 INSERT의 빈칸은?",
+    "answers": [
+      "INTO"
+    ],
+    "code": "INSERT ____ Student(id) VALUES(1);",
+    "explanation": "INSERT INTO 대상 테이블을 쓴다.",
+    "hint": "INSERT INTO 대상 테이블을 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X01-02",
+    "topic": "sql",
+    "prompt": "새 값을 넣는 빈칸은?",
+    "answers": [
+      "VALUES"
+    ],
+    "code": "INSERT INTO Student(id) ____(1);",
+    "explanation": "VALUES 뒤에 입력값을 쓴다.",
+    "hint": "VALUES 뒤에 입력값을 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X01-03",
+    "topic": "sql",
+    "prompt": "행을 지우는 명령은? DELETE / DROP",
+    "answers": [
+      "DELETE"
+    ],
+    "code": "INSERT INTO Student(id) ____(1);",
+    "explanation": "DELETE는 행을 지운다.",
+    "hint": "DELETE는 행을 지운다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X01-04",
+    "topic": "sql",
+    "prompt": "테이블 자체를 제거하는 명령은?",
+    "answers": [
+      "DROP TABLE"
+    ],
+    "code": "INSERT INTO Student(id) ____(1);",
+    "explanation": "DROP TABLE은 테이블 구조 자체를 제거한다.",
+    "hint": "DROP TABLE은 테이블 구조 자체를 제거한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X01-05",
+    "topic": "sql",
+    "prompt": "테이블 구조 변경 명령은?",
+    "answers": [
+      "ALTER TABLE"
+    ],
+    "code": "INSERT INTO Student(id) ____(1);",
+    "explanation": "ALTER TABLE로 구조를 변경한다.",
+    "hint": "ALTER TABLE로 구조를 변경한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X01-06",
+    "topic": "sql",
+    "prompt": "권한 회수 문장 사용자 앞의 빈칸은?",
+    "answers": [
+      "FROM"
+    ],
+    "code": "REVOKE SELECT ON Student ____ user1;",
+    "explanation": "권한을 줄 때 TO, 회수할 때 FROM이다.",
+    "hint": "권한을 줄 때 TO, 회수할 때 FROM이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X01",
+    "unitTitle": "INSERT·DELETE·DDL",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X02-01",
+    "topic": "sql",
+    "prompt": "LIKE의 %는 한 글자/길이 0 이상 문자열 중 무엇일까요?",
+    "answers": [
+      "길이 0 이상 문자열"
+    ],
+    "code": "",
+    "explanation": "%는 임의 길이 문자열과 대응한다.",
+    "hint": "%는 임의 길이 문자열과 대응한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X02",
+    "unitTitle": "조건과 정렬",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X02-02",
+    "topic": "sql",
+    "prompt": "LIKE의 _ 한 개는 몇 글자와 대응할까요?",
+    "answers": [
+      "1"
+    ],
+    "code": "",
+    "explanation": "_는 한 글자와 대응한다.",
+    "hint": "_는 한 글자와 대응한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-X02",
+    "unitTitle": "조건과 정렬",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X02-03",
+    "topic": "sql",
+    "prompt": "큰 값부터 정렬하는 키워드는?",
+    "answers": [
+      "DESC"
+    ],
+    "code": "",
+    "explanation": "ASC는 오름차순, DESC는 내림차순이다.",
+    "hint": "ASC는 오름차순, DESC는 내림차순이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X02",
+    "unitTitle": "조건과 정렬",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X02-04",
+    "topic": "sql",
+    "prompt": "SQL에서 AND와 OR 중 먼저 평가되는 것은?",
+    "answers": [
+      "AND"
+    ],
+    "code": "",
+    "explanation": "괄호로 의도한 조건 묶음을 분명히 한다.",
+    "hint": "괄호로 의도한 조건 묶음을 분명히 한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X02",
+    "unitTitle": "조건과 정렬",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X02-05",
+    "topic": "sql",
+    "prompt": "조회 결과 순서를 보장하려면 필요한 절은?",
+    "answers": [
+      "ORDER BY"
+    ],
+    "code": "",
+    "explanation": "ORDER BY가 없으면 출력 순서를 보장하지 않는다.",
+    "hint": "ORDER BY가 없으면 출력 순서를 보장하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X02",
+    "unitTitle": "조건과 정렬",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X03-01",
+    "topic": "sql",
+    "prompt": "10,20,NULL,20에서 SUM(x)는?",
+    "answers": [
+      "50"
+    ],
+    "code": "",
+    "explanation": "NULL을 빼고 합한다.",
+    "hint": "NULL을 빼고 합한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-X03",
+    "unitTitle": "SUM·AVG·빈 결과",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X03-02",
+    "topic": "sql",
+    "prompt": "10,20,NULL,20의 AVG(x)에서 분모는?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "NULL을 제외한 값 세 개로 나눈다.",
+    "hint": "NULL을 제외한 값 세 개로 나눈다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-X03",
+    "unitTitle": "SUM·AVG·빈 결과",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X03-03",
+    "topic": "sql",
+    "prompt": "입력 행이 0개면 COUNT(*)는?",
+    "answers": [
+      "0"
+    ],
+    "code": "",
+    "explanation": "COUNT는 빈 입력에서 0이다.",
+    "hint": "COUNT는 빈 입력에서 0이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-X03",
+    "unitTitle": "SUM·AVG·빈 결과",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X03-04",
+    "topic": "sql",
+    "prompt": "일반적인 SQL 집계에서 입력 행이 0개면 SUM(x)는?",
+    "answers": [
+      "NULL"
+    ],
+    "code": "",
+    "explanation": "SUM은 빈 입력에서 NULL이다.",
+    "hint": "SUM은 빈 입력에서 NULL이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X03",
+    "unitTitle": "SUM·AVG·빈 결과",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-01",
+    "topic": "sql",
+    "prompt": "양쪽에서 조건이 맞는 행만 남기는 조인은?",
+    "answers": [
+      "INNER JOIN",
+      "내부 조인"
+    ],
+    "code": "",
+    "explanation": "일치하는 행을 결합한다.",
+    "hint": "일치하는 행을 결합한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-02",
+    "topic": "sql",
+    "prompt": "일치하지 않아도 왼쪽 행을 남기는 조인은?",
+    "answers": [
+      "LEFT JOIN",
+      "왼쪽 외부 조인"
+    ],
+    "code": "",
+    "explanation": "오른쪽에 대응 행이 없으면 오른쪽 열을 NULL로 채운다.",
+    "hint": "오른쪽에 대응 행이 없으면 오른쪽 열을 NULL로 채운다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-03",
+    "topic": "sql",
+    "prompt": "한 왼쪽 행과 맞는 오른쪽 행이 세 개면 결과는 몇 행일 수 있나요?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "조인은 자동으로 중복을 제거하지 않는다.",
+    "hint": "조인은 자동으로 중복을 제거하지 않는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-04",
+    "topic": "sql",
+    "prompt": "중복을 유지하는 집합 결합은? UNION / UNION ALL",
+    "answers": [
+      "UNION ALL"
+    ],
+    "code": "",
+    "explanation": "UNION은 중복을 제거한다.",
+    "hint": "UNION은 중복을 제거한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-05",
+    "topic": "sql",
+    "prompt": "조회 정의를 가진 가상 테이블은?",
+    "answers": [
+      "뷰",
+      "VIEW"
+    ],
+    "code": "",
+    "explanation": "뷰는 조회 정의를 저장한 가상 테이블이다.",
+    "hint": "뷰는 조회 정의를 저장한 가상 테이블이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-SQL-X04-06",
+    "topic": "sql",
+    "prompt": "인덱스는 모든 조회를 반드시 빠르게 만들까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "저장 공간과 변경 비용도 있고 효과는 조회에 따라 다르다.",
+    "hint": "저장 공간과 변경 비용도 있고 효과는 조회에 따라 다르다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-SQL-X04",
+    "unitTitle": "조인·집합·뷰",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-01-01",
+    "topic": "db",
+    "prompt": "릴레이션의 한 행을 부르는 용어는?",
+    "answers": [
+      "튜플",
+      "tuple"
+    ],
+    "code": "",
+    "explanation": "튜플은 행을 뜻한다.",
+    "hint": "튜플은 행을 뜻한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-01",
+    "unitTitle": "행과 열",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-01-02",
+    "topic": "db",
+    "prompt": "릴레이션의 행 개수를 부르는 용어는?",
+    "answers": [
+      "카디널리티"
+    ],
+    "code": "",
+    "explanation": "카디널리티는 튜플 수다.",
+    "hint": "카디널리티는 튜플 수다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-01",
+    "unitTitle": "행과 열",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-01-03",
+    "topic": "db",
+    "prompt": "릴레이션의 열 개수를 부르는 용어는?",
+    "answers": [
+      "디그리"
+    ],
+    "code": "",
+    "explanation": "디그리는 속성 수다.",
+    "hint": "디그리는 속성 수다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-01",
+    "unitTitle": "행과 열",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-02-01",
+    "topic": "db",
+    "prompt": "행을 유일하게 식별하고 최소성은 요구하지 않는 키는?",
+    "answers": [
+      "슈퍼키"
+    ],
+    "code": "",
+    "explanation": "슈퍼키는 유일성을 가진다.",
+    "hint": "슈퍼키는 유일성을 가진다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-02",
+    "unitTitle": "후보키와 최소성",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-02-02",
+    "topic": "db",
+    "prompt": "슈퍼키에서 불필요한 속성을 더 뺄 수 없으면 무슨 키일까요?",
+    "answers": [
+      "후보키"
+    ],
+    "code": "",
+    "explanation": "후보키는 유일성과 최소성을 만족한다.",
+    "hint": "후보키는 유일성과 최소성을 만족한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-02",
+    "unitTitle": "후보키와 최소성",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-02-03",
+    "topic": "db",
+    "prompt": "최소성은 속성이 반드시 한 개라는 뜻일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "두 속성이 모두 필요하면 복합 후보키가 될 수 있다.",
+    "hint": "두 속성이 모두 필요하면 복합 후보키가 될 수 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-02",
+    "unitTitle": "후보키와 최소성",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-03-01",
+    "topic": "db",
+    "prompt": "후보키 중 대표로 선택한 키는?",
+    "answers": [
+      "기본키"
+    ],
+    "code": "",
+    "explanation": "기본키로 하나를 선택한다.",
+    "hint": "기본키로 하나를 선택한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-03",
+    "unitTitle": "기본키와 외래키",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-03-02",
+    "topic": "db",
+    "prompt": "선택되지 않은 나머지 후보키는?",
+    "answers": [
+      "대체키"
+    ],
+    "code": "",
+    "explanation": "기본키로 선택되지 않은 후보키다.",
+    "hint": "기본키로 선택되지 않은 후보키다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-03",
+    "unitTitle": "기본키와 외래키",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-03-03",
+    "topic": "db",
+    "prompt": "다른 릴레이션의 키를 참조하는 키는?",
+    "answers": [
+      "외래키"
+    ],
+    "code": "",
+    "explanation": "외래키는 참조 관계를 표현한다.",
+    "hint": "외래키는 참조 관계를 표현한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-03",
+    "unitTitle": "기본키와 외래키",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-04-01",
+    "topic": "db",
+    "prompt": "사용자별 관점의 스키마는?",
+    "answers": [
+      "외부 스키마",
+      "외부"
+    ],
+    "code": "",
+    "explanation": "사용자가 필요한 관점의 구조다.",
+    "hint": "사용자가 필요한 관점의 구조다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-04",
+    "unitTitle": "스키마 세 관점",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-04-02",
+    "topic": "db",
+    "prompt": "전체 DB의 논리 구조 스키마는?",
+    "answers": [
+      "개념 스키마",
+      "개념"
+    ],
+    "code": "",
+    "explanation": "통합된 논리 구조를 나타낸다.",
+    "hint": "통합된 논리 구조를 나타낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-04",
+    "unitTitle": "스키마 세 관점",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-04-03",
+    "topic": "db",
+    "prompt": "물리적 저장 관점의 스키마는?",
+    "answers": [
+      "내부 스키마",
+      "내부"
+    ],
+    "code": "",
+    "explanation": "저장 방법과 물리 구조를 나타낸다.",
+    "hint": "저장 방법과 물리 구조를 나타낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-04",
+    "unitTitle": "스키마 세 관점",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-05-01",
+    "topic": "db",
+    "prompt": "모든 속성값이 원자값인 정규형은?",
+    "answers": [
+      "1NF",
+      "제1정규형"
+    ],
+    "code": "",
+    "explanation": "제1정규형은 원자값 조건이다.",
+    "hint": "제1정규형은 원자값 조건이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-05",
+    "unitTitle": "1NF와 부분 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-05-02",
+    "topic": "db",
+    "prompt": "키가 (학번,과목)인데 학번만으로 학생이름이 정해짐: 부분/이행 종속?",
+    "answers": [
+      "부분"
+    ],
+    "code": "",
+    "explanation": "복합키 일부에만 종속되므로 부분 함수 종속이다.",
+    "hint": "복합키 일부에만 종속되므로 부분 함수 종속이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-05",
+    "unitTitle": "1NF와 부분 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-05-03",
+    "topic": "db",
+    "prompt": "1NF에서 부분 함수 종속을 제거한 정규형은?",
+    "answers": [
+      "2NF",
+      "제2정규형"
+    ],
+    "code": "",
+    "explanation": "제2정규형은 부분 함수 종속을 제거한다.",
+    "hint": "제2정규형은 부분 함수 종속을 제거한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-05",
+    "unitTitle": "1NF와 부분 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-06-01",
+    "topic": "db",
+    "prompt": "학번→학과번호→학과명: 부분/이행 종속?",
+    "answers": [
+      "이행"
+    ],
+    "code": "",
+    "explanation": "중간 속성을 거쳐 간접적으로 결정되는 유형이다.",
+    "hint": "중간 속성을 거쳐 간접적으로 결정되는 유형이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-06",
+    "unitTitle": "이행 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-06-02",
+    "topic": "db",
+    "prompt": "2NF에서 이행 함수 종속을 제거한 정규형은?",
+    "answers": [
+      "3NF",
+      "제3정규형"
+    ],
+    "code": "",
+    "explanation": "기본 정규화 문제에서는 3NF를 연결한다.",
+    "hint": "기본 정규화 문제에서는 3NF를 연결한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-06",
+    "unitTitle": "이행 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-06-03",
+    "topic": "db",
+    "prompt": "모든 비자명 함수 종속의 결정자가 슈퍼키인 정규형은?",
+    "answers": [
+      "BCNF"
+    ],
+    "code": "",
+    "explanation": "BCNF는 결정자의 조건을 더 엄격하게 본다.",
+    "hint": "BCNF는 결정자의 조건을 더 엄격하게 본다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-06",
+    "unitTitle": "이행 종속",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-07-01",
+    "topic": "db",
+    "prompt": "트랜잭션이 일부만 반영되지 않고 전부/전무로 처리되는 성질은?",
+    "answers": [
+      "원자성"
+    ],
+    "code": "",
+    "explanation": "Atomicity는 전부 수행하거나 전부 취소한다.",
+    "hint": "Atomicity는 전부 수행하거나 전부 취소한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-07",
+    "unitTitle": "ACID 앞 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-07-02",
+    "topic": "db",
+    "prompt": "ACID에서 원자성의 영문 첫 글자는?",
+    "answers": [
+      "A"
+    ],
+    "code": "",
+    "explanation": "A는 Atomicity다.",
+    "hint": "A는 Atomicity다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-07",
+    "unitTitle": "ACID 앞 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-07-03",
+    "topic": "db",
+    "prompt": "트랜잭션 전후에 무결성 규칙을 유지하는 성질은?",
+    "answers": [
+      "일관성"
+    ],
+    "code": "",
+    "explanation": "Consistency는 일관된 상태를 유지한다.",
+    "hint": "Consistency는 일관된 상태를 유지한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-07",
+    "unitTitle": "ACID 앞 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-08-01",
+    "topic": "db",
+    "prompt": "동시에 실행되는 트랜잭션 사이 간섭을 통제하는 성질은?",
+    "answers": [
+      "격리성"
+    ],
+    "code": "",
+    "explanation": "Isolation은 동시 실행의 간섭을 통제한다.",
+    "hint": "Isolation은 동시 실행의 간섭을 통제한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-08",
+    "unitTitle": "ACID 뒤 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-08-02",
+    "topic": "db",
+    "prompt": "COMMIT된 결과가 장애 뒤에도 남는 성질은?",
+    "answers": [
+      "지속성",
+      "영속성"
+    ],
+    "code": "",
+    "explanation": "Durability는 성공한 결과를 보존한다.",
+    "hint": "Durability는 성공한 결과를 보존한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-08",
+    "unitTitle": "ACID 뒤 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-08-03",
+    "topic": "db",
+    "prompt": "트랜잭션을 취소하는 명령은?",
+    "answers": [
+      "ROLLBACK"
+    ],
+    "code": "",
+    "explanation": "COMMIT은 확정, ROLLBACK은 취소다.",
+    "hint": "COMMIT은 확정, ROLLBACK은 취소다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-08",
+    "unitTitle": "ACID 뒤 두 글자",
+    "supplement": false
+  },
+  {
+    "id": "MP-DB-X01-01",
+    "topic": "db",
+    "prompt": "한 속성이 가질 수 있는 값의 범위는?",
+    "answers": [
+      "도메인"
+    ],
+    "code": "",
+    "explanation": "속성의 허용 값 집합이다.",
+    "hint": "속성의 허용 값 집합이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-02",
+    "topic": "db",
+    "prompt": "DB 구조와 제약조건에 대한 명세는?",
+    "answers": [
+      "스키마"
+    ],
+    "code": "",
+    "explanation": "데이터 자체보다 구조를 설명한다.",
+    "hint": "데이터 자체보다 구조를 설명한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-03",
+    "topic": "db",
+    "prompt": "기본키 구성 속성에 NULL을 넣을 수 있나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "기본키는 중복과 NULL을 허용하지 않는다.",
+    "hint": "기본키는 중복과 NULL을 허용하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-04",
+    "topic": "db",
+    "prompt": "외래키는 별도의 NOT NULL 없이 NULL일 수 있나요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "",
+    "explanation": "NULL 가능 여부와 참조 제약을 구별한다.",
+    "hint": "NULL 가능 여부와 참조 제약을 구별한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-05",
+    "topic": "db",
+    "prompt": "다치 종속 제거와 연결되는 정규형은?",
+    "answers": [
+      "4NF",
+      "제4정규형"
+    ],
+    "code": "",
+    "explanation": "비자명 다치 종속의 결정자 조건을 맞춘다.",
+    "hint": "비자명 다치 종속의 결정자 조건을 맞춘다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-06",
+    "topic": "db",
+    "prompt": "조인 종속 제거와 연결되는 정규형은?",
+    "answers": [
+      "5NF",
+      "제5정규형"
+    ],
+    "code": "",
+    "explanation": "후보키로 설명되지 않는 조인 종속을 제거한다.",
+    "hint": "후보키로 설명되지 않는 조인 종속을 제거한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-07",
+    "topic": "db",
+    "prompt": "데이터 중복이 만드는 이상 세 가지 중, 값 변경 시 불일치는 무슨 이상일까요?",
+    "answers": [
+      "갱신 이상",
+      "갱신"
+    ],
+    "code": "",
+    "explanation": "중복된 데이터의 일부만 바꾸면서 불일치가 생긴다.",
+    "hint": "중복된 데이터의 일부만 바꾸면서 불일치가 생긴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-DB-X01-08",
+    "topic": "db",
+    "prompt": "DB 특징은 주소/내용에 의한 참조 중 무엇일까요?",
+    "answers": [
+      "내용"
+    ],
+    "code": "",
+    "explanation": "주소보다 데이터 내용에 의한 참조를 사용한다.",
+    "hint": "주소보다 데이터 내용에 의한 참조를 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-DB-X01",
+    "unitTitle": "DB 용어와 정규화 확장",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-01-01",
+    "topic": "network",
+    "prompt": "OSI에서 비트·전기 신호와 연결되는 계층은?",
+    "answers": [
+      "물리 계층",
+      "물리",
+      "1계층"
+    ],
+    "code": "",
+    "explanation": "1계층은 물리 계층이다.",
+    "hint": "1계층은 물리 계층이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-01",
+    "unitTitle": "계층과 전달 단위",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-01-02",
+    "topic": "network",
+    "prompt": "프레임·MAC과 연결되는 계층은?",
+    "answers": [
+      "데이터 링크 계층",
+      "데이터 링크",
+      "2계층"
+    ],
+    "code": "",
+    "explanation": "2계층은 인접 노드 사이 프레임 전달이다.",
+    "hint": "2계층은 인접 노드 사이 프레임 전달이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-01",
+    "unitTitle": "계층과 전달 단위",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-01-03",
+    "topic": "network",
+    "prompt": "IP·라우팅과 연결되는 계층은?",
+    "answers": [
+      "네트워크 계층",
+      "네트워크",
+      "3계층"
+    ],
+    "code": "",
+    "explanation": "3계층은 논리 주소와 경로 선택이다.",
+    "hint": "3계층은 논리 주소와 경로 선택이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-01",
+    "unitTitle": "계층과 전달 단위",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-02-01",
+    "topic": "network",
+    "prompt": "도메인 이름을 IP 주소로 찾는 것은?",
+    "answers": [
+      "DNS"
+    ],
+    "code": "",
+    "explanation": "DNS는 이름 해석이다.",
+    "hint": "DNS는 이름 해석이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-02",
+    "unitTitle": "DNS와 ARP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-02-02",
+    "topic": "network",
+    "prompt": "로컬 IPv4 주소에 대응하는 MAC 주소를 찾는 것은?",
+    "answers": [
+      "ARP"
+    ],
+    "code": "",
+    "explanation": "ARP는 IPv4 주소와 MAC 주소를 연결한다.",
+    "hint": "ARP는 IPv4 주소와 MAC 주소를 연결한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-02",
+    "unitTitle": "DNS와 ARP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-02-03",
+    "topic": "network",
+    "prompt": "ARP가 찾는 것은 IP/포트/MAC 중 무엇일까요?",
+    "answers": [
+      "MAC"
+    ],
+    "code": "",
+    "explanation": "DNS와 방향을 혼동하지 않는다.",
+    "hint": "DNS와 방향을 혼동하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-02",
+    "unitTitle": "DNS와 ARP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-03-01",
+    "topic": "network",
+    "prompt": "ping의 Echo 메시지에 쓰는 프로토콜은?",
+    "answers": [
+      "ICMP"
+    ],
+    "code": "",
+    "explanation": "ICMP는 오류·진단 메시지를 전달한다.",
+    "hint": "ICMP는 오류·진단 메시지를 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-03",
+    "unitTitle": "진단과 관리",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-03-02",
+    "topic": "network",
+    "prompt": "네트워크 장비를 감시·관리하는 프로토콜은?",
+    "answers": [
+      "SNMP"
+    ],
+    "code": "",
+    "explanation": "SNMP는 네트워크 관리다.",
+    "hint": "SNMP는 네트워크 관리다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-03",
+    "unitTitle": "진단과 관리",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-03-03",
+    "topic": "network",
+    "prompt": "IPv4 멀티캐스트 그룹 관리 프로토콜은?",
+    "answers": [
+      "IGMP"
+    ],
+    "code": "",
+    "explanation": "IGMP는 그룹 참여를 관리한다.",
+    "hint": "IGMP는 그룹 참여를 관리한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-03",
+    "unitTitle": "진단과 관리",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-04-01",
+    "topic": "network",
+    "prompt": "HTTPS의 대표 포트 번호는?",
+    "answers": [
+      "443"
+    ],
+    "code": "",
+    "explanation": "TLS를 사용하는 웹의 대표 포트다.",
+    "hint": "TLS를 사용하는 웹의 대표 포트다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-04",
+    "unitTitle": "서비스 포트",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-04-02",
+    "topic": "network",
+    "prompt": "SSH의 대표 포트 번호는?",
+    "answers": [
+      "22"
+    ],
+    "code": "",
+    "explanation": "암호화된 원격 접속에 사용한다.",
+    "hint": "암호화된 원격 접속에 사용한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-04",
+    "unitTitle": "서비스 포트",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-04-03",
+    "topic": "network",
+    "prompt": "IMAP의 대표 포트 번호는?",
+    "answers": [
+      "143"
+    ],
+    "code": "",
+    "explanation": "메일 수신 방식의 대표 포트다.",
+    "hint": "메일 수신 방식의 대표 포트다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-04",
+    "unitTitle": "서비스 포트",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-05-01",
+    "topic": "network",
+    "prompt": "IP 설정을 자동 할당하는 프로토콜은?",
+    "answers": [
+      "DHCP"
+    ],
+    "code": "",
+    "explanation": "DHCP로 주소 등의 설정을 받는다.",
+    "hint": "DHCP로 주소 등의 설정을 받는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-05",
+    "unitTitle": "DHCP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-05-02",
+    "topic": "network",
+    "prompt": "IPv4 DHCP 서버의 UDP 포트는?",
+    "answers": [
+      "67"
+    ],
+    "code": "",
+    "explanation": "서버 67, 클라이언트 68이다.",
+    "hint": "서버 67, 클라이언트 68이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-05",
+    "unitTitle": "DHCP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-05-03",
+    "topic": "network",
+    "prompt": "IPv4 DHCP 클라이언트의 UDP 포트는?",
+    "answers": [
+      "68"
+    ],
+    "code": "",
+    "explanation": "서버와 클라이언트의 번호를 바꾸지 않는다.",
+    "hint": "서버와 클라이언트의 번호를 바꾸지 않는다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-05",
+    "unitTitle": "DHCP",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-06-01",
+    "topic": "network",
+    "prompt": "거리 벡터 방식 라우팅 프로토콜: RIP/OSPF?",
+    "answers": [
+      "RIP"
+    ],
+    "code": "",
+    "explanation": "RIP는 홉 수를 사용하는 거리 벡터 방식이다.",
+    "hint": "RIP는 홉 수를 사용하는 거리 벡터 방식이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-06",
+    "unitTitle": "RIP와 OSPF",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-06-02",
+    "topic": "network",
+    "prompt": "RIP에서 최대 유효 홉 수는?",
+    "answers": [
+      "15"
+    ],
+    "code": "",
+    "explanation": "16홉은 도달 불가를 나타낸다.",
+    "hint": "16홉은 도달 불가를 나타낸다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-06",
+    "unitTitle": "RIP와 OSPF",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-06-03",
+    "topic": "network",
+    "prompt": "링크 상태·Dijkstra와 연결되는 프로토콜은?",
+    "answers": [
+      "OSPF"
+    ],
+    "code": "",
+    "explanation": "OSPF는 비용을 기준으로 경로를 고른다.",
+    "hint": "OSPF는 비용을 기준으로 경로를 고른다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-06",
+    "unitTitle": "RIP와 OSPF",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-07-01",
+    "topic": "network",
+    "prompt": "IPv4는 총 몇 비트일까요?",
+    "answers": [
+      "32"
+    ],
+    "code": "",
+    "explanation": "IPv4 주소는 32비트다.",
+    "hint": "IPv4 주소는 32비트다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-07",
+    "unitTitle": "서브넷 작은 계산",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-07-02",
+    "topic": "network",
+    "prompt": "/26에서 호스트 비트 수는? 32-26.",
+    "answers": [
+      "6"
+    ],
+    "code": "",
+    "explanation": "앞 26비트는 네트워크, 뒤 6비트는 호스트다.",
+    "hint": "앞 26비트는 네트워크, 뒤 6비트는 호스트다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-07",
+    "unitTitle": "서브넷 작은 계산",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-07-03",
+    "topic": "network",
+    "prompt": "호스트 비트 6개로 만들 수 있는 주소 수는? 2의 6제곱.",
+    "answers": [
+      "64"
+    ],
+    "code": "",
+    "explanation": "이 예에서 블록 크기는 64다.",
+    "hint": "이 예에서 블록 크기는 64다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-07",
+    "unitTitle": "서브넷 작은 계산",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-08-01",
+    "topic": "network",
+    "prompt": "하나 보내고 응답을 기다리는 ARQ는?",
+    "answers": [
+      "Stop-and-Wait",
+      "Stop and Wait"
+    ],
+    "code": "",
+    "explanation": "한 프레임씩 보내고 확인한다.",
+    "hint": "한 프레임씩 보내고 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-08",
+    "unitTitle": "ARQ 재전송",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-08-02",
+    "topic": "network",
+    "prompt": "오류 난 프레임부터 뒤의 미확인 프레임도 재전송하는 ARQ는?",
+    "answers": [
+      "Go-Back-N",
+      "GBN"
+    ],
+    "code": "",
+    "explanation": "뒤로 돌아가 미확인 프레임들을 다시 보낸다.",
+    "hint": "뒤로 돌아가 미확인 프레임들을 다시 보낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-08",
+    "unitTitle": "ARQ 재전송",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-08-03",
+    "topic": "network",
+    "prompt": "필요한 프레임만 선택 재전송하는 ARQ는?",
+    "answers": [
+      "Selective Repeat",
+      "SR"
+    ],
+    "code": "",
+    "explanation": "재전송할 프레임을 개별적으로 고른다.",
+    "hint": "재전송할 프레임을 개별적으로 고른다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-08",
+    "unitTitle": "ARQ 재전송",
+    "supplement": false
+  },
+  {
+    "id": "MP-NETWORK-X01-01",
+    "topic": "network",
+    "prompt": "종단 간 전달·포트와 연결되는 OSI 계층은?",
+    "answers": [
+      "전송 계층",
+      "전송",
+      "4계층"
+    ],
+    "code": "",
+    "explanation": "4계층은 종단 간 전달을 담당한다.",
+    "hint": "4계층은 종단 간 전달을 담당한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-02",
+    "topic": "network",
+    "prompt": "대화·동기점 관리 계층은?",
+    "answers": [
+      "세션 계층",
+      "세션",
+      "5계층"
+    ],
+    "code": "",
+    "explanation": "5계층은 세션 관리다.",
+    "hint": "5계층은 세션 관리다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-03",
+    "topic": "network",
+    "prompt": "형식 변환·압축 기능의 OSI 계층은?",
+    "answers": [
+      "표현 계층",
+      "표현",
+      "6계층"
+    ],
+    "code": "",
+    "explanation": "6계층은 데이터 표현을 다룬다.",
+    "hint": "6계층은 데이터 표현을 다룬다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-04",
+    "topic": "network",
+    "prompt": "사용자 네트워크 서비스 제공 계층은?",
+    "answers": [
+      "응용 계층",
+      "응용",
+      "7계층"
+    ],
+    "code": "",
+    "explanation": "7계층은 응용 서비스다.",
+    "hint": "7계층은 응용 서비스다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-05",
+    "topic": "network",
+    "prompt": "연결 지향·재전송과 연결되는 것은? TCP / UDP",
+    "answers": [
+      "TCP"
+    ],
+    "code": "",
+    "explanation": "TCP는 전달 순서와 재전송 등을 제공한다.",
+    "hint": "TCP는 전달 순서와 재전송 등을 제공한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-06",
+    "topic": "network",
+    "prompt": "UDP는 전송계층 자체에서 재전송을 보장하나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "체크섬 검사와 재전송 보장은 다르다.",
+    "hint": "체크섬 검사와 재전송 보장은 다르다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X01-07",
+    "topic": "network",
+    "prompt": "IP 주소를 변환하는 기술 약어는?",
+    "answers": [
+      "NAT"
+    ],
+    "code": "",
+    "explanation": "사설·공인 주소 등의 변환에 사용한다.",
+    "hint": "사설·공인 주소 등의 변환에 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X01",
+    "unitTitle": "상위 계층·TCP와 UDP",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-01",
+    "topic": "network",
+    "prompt": "HTTP의 대표 포트는?",
+    "answers": [
+      "80"
+    ],
+    "code": "",
+    "explanation": "HTTPS 443과 구별한다.",
+    "hint": "HTTPS 443과 구별한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-02",
+    "topic": "network",
+    "prompt": "FTP 제어 연결의 대표 포트는?",
+    "answers": [
+      "21"
+    ],
+    "code": "",
+    "explanation": "데이터 연결과 제어 연결을 구별한다.",
+    "hint": "데이터 연결과 제어 연결을 구별한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-03",
+    "topic": "network",
+    "prompt": "Telnet의 대표 포트는?",
+    "answers": [
+      "23"
+    ],
+    "code": "",
+    "explanation": "평문 원격 접속이다.",
+    "hint": "평문 원격 접속이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-04",
+    "topic": "network",
+    "prompt": "SMTP의 대표 포트는?",
+    "answers": [
+      "25"
+    ],
+    "code": "",
+    "explanation": "메일 전송에 사용한다.",
+    "hint": "메일 전송에 사용한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-05",
+    "topic": "network",
+    "prompt": "DNS의 대표 포트는?",
+    "answers": [
+      "53"
+    ],
+    "code": "",
+    "explanation": "이름 해석에 사용한다.",
+    "hint": "이름 해석에 사용한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-06",
+    "topic": "network",
+    "prompt": "DNS는 UDP만 쓰나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "DNS는 UDP와 TCP를 모두 쓴다.",
+    "hint": "DNS는 UDP와 TCP를 모두 쓴다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-07",
+    "topic": "network",
+    "prompt": "POP3의 대표 포트는?",
+    "answers": [
+      "110"
+    ],
+    "code": "",
+    "explanation": "IMAP 143과 구별한다.",
+    "hint": "IMAP 143과 구별한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X02-08",
+    "topic": "network",
+    "prompt": "SNMP 관리 요청의 대표 포트는?",
+    "answers": [
+      "161"
+    ],
+    "code": "",
+    "explanation": "알림은 보통 162다.",
+    "hint": "알림은 보통 162다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X02",
+    "unitTitle": "포트 짝 추가",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-01",
+    "topic": "network",
+    "prompt": "77은 0~63 / 64~127 중 어느 구간일까요?",
+    "answers": [
+      "64",
+      "127"
+    ],
+    "code": "",
+    "explanation": "/26의 마지막 옥텟 블록 크기는 64다.",
+    "hint": "/26의 마지막 옥텟 블록 크기는 64다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-02",
+    "topic": "network",
+    "prompt": "192.168.10.77/26의 브로드캐스트 주소는?",
+    "answers": [
+      "192.168.10.127"
+    ],
+    "code": "",
+    "explanation": "구간 마지막 주소는 호스트 비트가 모두 1이다.",
+    "hint": "구간 마지막 주소는 호스트 비트가 모두 1이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-03",
+    "topic": "network",
+    "prompt": "일반 /26 서브넷의 사용 가능 호스트 수는? 64-2.",
+    "answers": [
+      "62"
+    ],
+    "code": "",
+    "explanation": "일반 서브넷에서는 네트워크·브로드캐스트 주소를 뺀다.",
+    "hint": "일반 서브넷에서는 네트워크·브로드캐스트 주소를 뺀다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-04",
+    "topic": "network",
+    "prompt": "/26의 마스크 마지막 옥텟은? 256-64.",
+    "answers": [
+      "192"
+    ],
+    "code": "",
+    "explanation": "마스크는 255.255.255.192다.",
+    "hint": "마스크는 255.255.255.192다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-05",
+    "topic": "network",
+    "prompt": "IPv6는 총 몇 비트일까요?",
+    "answers": [
+      "128"
+    ],
+    "code": "",
+    "explanation": "IPv4 32비트와 구별한다.",
+    "hint": "IPv4 32비트와 구별한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X03-06",
+    "topic": "network",
+    "prompt": "/31 점대점에서도 무조건 주소 수에서 2를 뺄까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "/31과 /32에는 일반 서브넷 공식을 무조건 적용하지 않는다.",
+    "hint": "/31과 /32에는 일반 서브넷 공식을 무조건 적용하지 않는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X03",
+    "unitTitle": "주소 계산 이어서",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-01",
+    "topic": "network",
+    "prompt": "일대일 전달 방식은?",
+    "answers": [
+      "유니캐스트",
+      "unicast"
+    ],
+    "code": "",
+    "explanation": "하나의 송신 대상에게 전달한다.",
+    "hint": "하나의 송신 대상에게 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-02",
+    "topic": "network",
+    "prompt": "특정 그룹에 전달하는 방식은?",
+    "answers": [
+      "멀티캐스트",
+      "multicast"
+    ],
+    "code": "",
+    "explanation": "그룹에 속한 대상에게 전달한다.",
+    "hint": "그룹에 속한 대상에게 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-03",
+    "topic": "network",
+    "prompt": "전용 경로를 먼저 설정하는 교환 방식은?",
+    "answers": [
+      "회선 교환"
+    ],
+    "code": "",
+    "explanation": "회선 교환은 전용 경로를 설정한다.",
+    "hint": "회선 교환은 전용 경로를 설정한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-04",
+    "topic": "network",
+    "prompt": "메시지를 작은 조각으로 나누는 교환 방식은?",
+    "answers": [
+      "패킷 교환"
+    ],
+    "code": "",
+    "explanation": "패킷 단위로 전달한다.",
+    "hint": "패킷 단위로 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-05",
+    "topic": "network",
+    "prompt": "재전송 없이 수신 측에서 오류를 고치는 방식 약어는?",
+    "answers": [
+      "FEC"
+    ],
+    "code": "",
+    "explanation": "오류 정정 코드를 사용한다.",
+    "hint": "오류 정정 코드를 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-NETWORK-X04-06",
+    "topic": "network",
+    "prompt": "패리티는 모든 짝수 개 비트 오류까지 검출하나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "짝수 개 비트가 바뀌면 패리티가 같아 놓칠 수 있다.",
+    "hint": "짝수 개 비트가 바뀌면 패리티가 같아 놓칠 수 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-NETWORK-X04",
+    "unitTitle": "전달·교환·오류 제어",
+    "supplement": true
+  },
+  {
+    "id": "MP-TEST-01-01",
+    "topic": "test",
+    "prompt": "내부 코드를 몰라도 입력·출력으로 검사: 블랙박스/화이트박스?",
+    "answers": [
+      "블랙박스"
+    ],
+    "code": "",
+    "explanation": "명세와 기능에 기반한다.",
+    "hint": "명세와 기능에 기반한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-01",
+    "unitTitle": "블랙박스와 화이트박스",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-01-02",
+    "topic": "test",
+    "prompt": "내부 코드·분기·경로 기반 검사: 블랙박스/화이트박스?",
+    "answers": [
+      "화이트박스"
+    ],
+    "code": "",
+    "explanation": "코드 구조를 보고 검사한다.",
+    "hint": "코드 구조를 보고 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-01",
+    "unitTitle": "블랙박스와 화이트박스",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-01-03",
+    "topic": "test",
+    "prompt": "화이트박스는 반드시 코드를 실행하지 않는다는 뜻일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "블랙/화이트와 정적/동적은 서로 다른 분류다.",
+    "hint": "블랙/화이트와 정적/동적은 서로 다른 분류다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-01",
+    "unitTitle": "블랙박스와 화이트박스",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-02-01",
+    "topic": "test",
+    "prompt": "실행하지 않고 코드·문서를 검토: 정적/동적?",
+    "answers": [
+      "정적"
+    ],
+    "code": "",
+    "explanation": "정적 테스트는 실행 없이 검토한다.",
+    "hint": "정적 테스트는 실행 없이 검토한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-02",
+    "unitTitle": "정적과 동적",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-02-02",
+    "topic": "test",
+    "prompt": "실행 결과를 확인하는 테스트: 정적/동적?",
+    "answers": [
+      "동적"
+    ],
+    "code": "",
+    "explanation": "동적 테스트는 실제 실행한다.",
+    "hint": "동적 테스트는 실제 실행한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-02",
+    "unitTitle": "정적과 동적",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-02-03",
+    "topic": "test",
+    "prompt": "코드 리뷰는 실행이 없을 때 정적/동적 중 무엇일까요?",
+    "answers": [
+      "정적"
+    ],
+    "code": "",
+    "explanation": "리뷰로 결함을 찾는 정적 활동이다.",
+    "hint": "리뷰로 결함을 찾는 정적 활동이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-02",
+    "unitTitle": "정적과 동적",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-03-01",
+    "topic": "test",
+    "prompt": "위에서 아래로 모듈을 붙이는 방식은? 하향식/상향식",
+    "answers": [
+      "하향식"
+    ],
+    "code": "",
+    "explanation": "상위 모듈부터 통합한다.",
+    "hint": "상위 모듈부터 통합한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-03",
+    "unitTitle": "스텁과 드라이버",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-03-02",
+    "topic": "test",
+    "prompt": "하향식에서 없는 하위 모듈을 대신하는 것은?",
+    "answers": [
+      "스텁",
+      "stub"
+    ],
+    "code": "",
+    "explanation": "아래 모듈을 스텁으로 대신한다.",
+    "hint": "아래 모듈을 스텁으로 대신한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-03",
+    "unitTitle": "스텁과 드라이버",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-03-03",
+    "topic": "test",
+    "prompt": "상향식에서 없는 상위 호출자를 대신하는 것은?",
+    "answers": [
+      "드라이버",
+      "driver"
+    ],
+    "code": "",
+    "explanation": "위에서 호출할 모듈을 드라이버로 대신한다.",
+    "hint": "위에서 호출할 모듈을 드라이버로 대신한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-03",
+    "unitTitle": "스텁과 드라이버",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-04-01",
+    "topic": "test",
+    "prompt": "개별 모듈 하나를 검사하는 수준은?",
+    "answers": [
+      "단위 테스트",
+      "단위"
+    ],
+    "code": "",
+    "explanation": "개별 기능과 모듈 단위로 검사한다.",
+    "hint": "개별 기능과 모듈 단위로 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-04",
+    "unitTitle": "테스트 네 수준",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-04-02",
+    "topic": "test",
+    "prompt": "모듈을 붙인 뒤 상호작용을 검사하는 수준은?",
+    "answers": [
+      "통합 테스트",
+      "통합"
+    ],
+    "code": "",
+    "explanation": "모듈 사이 인터페이스를 검사한다.",
+    "hint": "모듈 사이 인터페이스를 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-04",
+    "unitTitle": "테스트 네 수준",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-04-03",
+    "topic": "test",
+    "prompt": "전체 시스템의 요구사항을 검사하는 수준은?",
+    "answers": [
+      "시스템 테스트",
+      "시스템"
+    ],
+    "code": "",
+    "explanation": "완성된 전체 시스템을 검사한다.",
+    "hint": "완성된 전체 시스템을 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-04",
+    "unitTitle": "테스트 네 수준",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-05-01",
+    "topic": "test",
+    "prompt": "명세대로 만들었는가: Verification/Validation?",
+    "answers": [
+      "Verification"
+    ],
+    "code": "",
+    "explanation": "Verification은 명세 적합 여부를 검증한다.",
+    "hint": "Verification은 명세 적합 여부를 검증한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-05",
+    "unitTitle": "검증과 확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-05-02",
+    "topic": "test",
+    "prompt": "사용자가 원하는 제품인가: Verification/Validation?",
+    "answers": [
+      "Validation"
+    ],
+    "code": "",
+    "explanation": "Validation은 실제 요구 충족을 확인한다.",
+    "hint": "Validation은 실제 요구 충족을 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-05",
+    "unitTitle": "검증과 확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-05-03",
+    "topic": "test",
+    "prompt": "사용자가 제품을 수용할지 판단하는 테스트 수준은?",
+    "answers": [
+      "인수 테스트",
+      "인수"
+    ],
+    "code": "",
+    "explanation": "사용자의 요구와 수용 여부를 확인한다.",
+    "hint": "사용자의 요구와 수용 여부를 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-05",
+    "unitTitle": "검증과 확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-06-01",
+    "topic": "test",
+    "prompt": "개발자 환경에서 함께 하는 인수 테스트: 알파/베타?",
+    "answers": [
+      "알파"
+    ],
+    "code": "",
+    "explanation": "알파는 개발자 환경에서 진행한다.",
+    "hint": "알파는 개발자 환경에서 진행한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-06",
+    "unitTitle": "알파와 베타",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-06-02",
+    "topic": "test",
+    "prompt": "사용자의 실제 환경에서 하는 테스트: 알파/베타?",
+    "answers": [
+      "베타"
+    ],
+    "code": "",
+    "explanation": "베타는 사용 환경에서 확인한다.",
+    "hint": "베타는 사용 환경에서 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-06",
+    "unitTitle": "알파와 베타",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-06-03",
+    "topic": "test",
+    "prompt": "한꺼번에 모듈을 결합하는 통합 방식은?",
+    "answers": [
+      "빅뱅"
+    ],
+    "code": "",
+    "explanation": "빅뱅은 오류 원인 격리가 어려울 수 있다.",
+    "hint": "빅뱅은 오류 원인 격리가 어려울 수 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-06",
+    "unitTitle": "알파와 베타",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-07-01",
+    "topic": "test",
+    "prompt": "유효 범위 1~100에서 바로 아래의 무효 값은?",
+    "answers": [
+      "0"
+    ],
+    "code": "",
+    "explanation": "경계 밖 바로 옆의 값을 확인한다.",
+    "hint": "경계 밖 바로 옆의 값을 확인한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-TEST-07",
+    "unitTitle": "경계값과 동등 분할",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-07-02",
+    "topic": "test",
+    "prompt": "유효 범위 1~100에서 바로 위의 무효 값은?",
+    "answers": [
+      "101"
+    ],
+    "code": "",
+    "explanation": "상한 100 바로 위는 101이다.",
+    "hint": "상한 100 바로 위는 101이다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-TEST-07",
+    "unitTitle": "경계값과 동등 분할",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-07-03",
+    "topic": "test",
+    "prompt": "0,1,2,99,100,101을 고르는 기법은?",
+    "answers": [
+      "경계값 분석",
+      "경계값"
+    ],
+    "code": "",
+    "explanation": "경계와 바로 옆을 집중 검사한다.",
+    "hint": "경계와 바로 옆을 집중 검사한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-07",
+    "unitTitle": "경계값과 동등 분할",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-08-01",
+    "topic": "test",
+    "prompt": "수정 뒤 기존 기능도 깨졌는지 검사하는 것은?",
+    "answers": [
+      "회귀 테스트",
+      "회귀"
+    ],
+    "code": "",
+    "explanation": "변경으로 생긴 부작용을 찾는다.",
+    "hint": "변경으로 생긴 부작용을 찾는다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-08",
+    "unitTitle": "회귀와 재확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-08-02",
+    "topic": "test",
+    "prompt": "테스트 케이스에는 입력만 있고 예상 결과는 없어도 될까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "실제 결과와 비교할 예상 결과가 필요하다.",
+    "hint": "실제 결과와 비교할 예상 결과가 필요하다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-08",
+    "unitTitle": "회귀와 재확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-08-03",
+    "topic": "test",
+    "prompt": "개별 조건의 참·거짓을 확인하는 커버리지는?",
+    "answers": [
+      "조건 커버리지",
+      "조건"
+    ],
+    "code": "",
+    "explanation": "전체 분기 결과를 보는 결정 커버리지와 구별한다.",
+    "hint": "전체 분기 결과를 보는 결정 커버리지와 구별한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-08",
+    "unitTitle": "회귀와 재확인",
+    "supplement": false
+  },
+  {
+    "id": "MP-TEST-X01-01",
+    "topic": "test",
+    "prompt": "입력 집합마다 대표값을 고르는 기법은?",
+    "answers": [
+      "동등 분할",
+      "동등 분할 테스트"
+    ],
+    "code": "",
+    "explanation": "유효·무효 집합의 대표값을 고른다.",
+    "hint": "유효·무효 집합의 대표값을 고른다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-X01",
+    "unitTitle": "커버리지·동등 분할·V모델",
+    "supplement": true
+  },
+  {
+    "id": "MP-TEST-X01-02",
+    "topic": "test",
+    "prompt": "실행 문장을 얼마나 거쳤는지 보는 커버리지는?",
+    "answers": [
+      "문장 커버리지",
+      "문장"
+    ],
+    "code": "",
+    "explanation": "문장의 실행 여부를 본다.",
+    "hint": "문장의 실행 여부를 본다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-X01",
+    "unitTitle": "커버리지·동등 분할·V모델",
+    "supplement": true
+  },
+  {
+    "id": "MP-TEST-X01-03",
+    "topic": "test",
+    "prompt": "각 분기의 참·거짓 결과를 거쳤는지 보는 커버리지는?",
+    "answers": [
+      "결정 커버리지",
+      "분기 커버리지",
+      "결정",
+      "분기"
+    ],
+    "code": "",
+    "explanation": "전체 결정 결과의 양쪽 분기를 확인한다.",
+    "hint": "전체 결정 결과의 양쪽 분기를 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-X01",
+    "unitTitle": "커버리지·동등 분할·V모델",
+    "supplement": true
+  },
+  {
+    "id": "MP-TEST-X01-04",
+    "topic": "test",
+    "prompt": "분석↔시스템, 요구사항↔인수로 대응시키는 모델은?",
+    "answers": [
+      "V모델",
+      "V 모델"
+    ],
+    "code": "",
+    "explanation": "문제 그림의 구체적인 단계 표현을 우선한다.",
+    "hint": "문제 그림의 구체적인 단계 표현을 우선한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-X01",
+    "unitTitle": "커버리지·동등 분할·V모델",
+    "supplement": true
+  },
+  {
+    "id": "MP-TEST-X01-05",
+    "topic": "test",
+    "prompt": "동등 분할에서 유효·무효 입력 개수는 반드시 같아야 하나요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "집합의 대표값을 고르는 것이 정의다.",
+    "hint": "집합의 대표값을 고르는 것이 정의다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-TEST-X01",
+    "unitTitle": "커버리지·동등 분할·V모델",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-01-01",
+    "topic": "os",
+    "prompt": "먼저 도착한 작업부터 실행하는 알고리즘은?",
+    "answers": [
+      "FCFS"
+    ],
+    "code": "",
+    "explanation": "도착 순서를 기준으로 한다.",
+    "hint": "도착 순서를 기준으로 한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-01",
+    "unitTitle": "스케줄링 이름",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-01-02",
+    "topic": "os",
+    "prompt": "실행시간이 짧은 작업부터 고르는 비선점 알고리즘은?",
+    "answers": [
+      "SJF"
+    ],
+    "code": "",
+    "explanation": "긴 작업이 오래 기다리는 기아가 가능하다.",
+    "hint": "긴 작업이 오래 기다리는 기아가 가능하다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-01",
+    "unitTitle": "스케줄링 이름",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-01-03",
+    "topic": "os",
+    "prompt": "시간 할당량만큼 번갈아 실행하는 알고리즘은?",
+    "answers": [
+      "RR",
+      "Round Robin",
+      "라운드 로빈"
+    ],
+    "code": "",
+    "explanation": "할당량을 다 쓴 작업은 준비 큐 뒤로 간다.",
+    "hint": "할당량을 다 쓴 작업은 준비 큐 뒤로 간다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-01",
+    "unitTitle": "스케줄링 이름",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-02-01",
+    "topic": "os",
+    "prompt": "HRN 응답비의 분자는? 대기+서비스 / 대기-서비스",
+    "answers": [
+      "대기+서비스"
+    ],
+    "code": "",
+    "explanation": "대기시간에 서비스시간을 더한다.",
+    "hint": "대기시간에 서비스시간을 더한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-02",
+    "unitTitle": "HRN 한 칸씩",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-02-02",
+    "topic": "os",
+    "prompt": "HRN 응답비의 분모는?",
+    "answers": [
+      "서비스시간",
+      "서비스"
+    ],
+    "code": "",
+    "explanation": "서비스시간으로 나눈다.",
+    "hint": "서비스시간으로 나눈다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-02",
+    "unitTitle": "HRN 한 칸씩",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-02-03",
+    "topic": "os",
+    "prompt": "대기 6, 서비스 3이면 HRN 응답비는?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "(6+3)/3으로 계산한다.",
+    "hint": "(6+3)/3으로 계산한다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-OS-02",
+    "unitTitle": "HRN 한 칸씩",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-03-01",
+    "topic": "os",
+    "prompt": "도착 2, 완료 10이면 반환시간은?",
+    "answers": [
+      "8"
+    ],
+    "code": "",
+    "explanation": "완료시각에서 도착시각을 뺀다.",
+    "hint": "완료시각에서 도착시각을 뺀다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-OS-03",
+    "unitTitle": "반환과 대기시간",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-03-02",
+    "topic": "os",
+    "prompt": "반환 8, 실행 5이면 대기시간은?",
+    "answers": [
+      "3"
+    ],
+    "code": "",
+    "explanation": "기본 CPU 문제에서는 반환시간에서 실행시간을 뺀다.",
+    "hint": "기본 CPU 문제에서는 반환시간에서 실행시간을 뺀다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-OS-03",
+    "unitTitle": "반환과 대기시간",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-03-03",
+    "topic": "os",
+    "prompt": "도착 2, 처음 실행 4이면 응답시간은?",
+    "answers": [
+      "2"
+    ],
+    "code": "",
+    "explanation": "최초 실행시각에서 도착시각을 뺀다.",
+    "hint": "최초 실행시각에서 도착시각을 뺀다.",
+    "mode": "output",
+    "kind": "micro",
+    "unitId": "U-OS-03",
+    "unitTitle": "반환과 대기시간",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-04-01",
+    "topic": "os",
+    "prompt": "자원을 가진 채 다른 자원을 기다리는 조건은?",
+    "answers": [
+      "점유와 대기",
+      "점유 및 대기"
+    ],
+    "code": "",
+    "explanation": "가지고 있으면서 기다리는 상태다.",
+    "hint": "가지고 있으면서 기다리는 상태다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-04",
+    "unitTitle": "교착 조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-04-02",
+    "topic": "os",
+    "prompt": "원하는 자원을 서로 고리처럼 기다리는 조건은?",
+    "answers": [
+      "순환 대기"
+    ],
+    "code": "",
+    "explanation": "기다리는 관계가 순환한다.",
+    "hint": "기다리는 관계가 순환한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-04",
+    "unitTitle": "교착 조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-04-03",
+    "topic": "os",
+    "prompt": "은행원 알고리즘은 교착 예방/회피 중 무엇일까요?",
+    "answers": [
+      "회피"
+    ],
+    "code": "",
+    "explanation": "안전 상태를 확인해서 할당한다.",
+    "hint": "안전 상태를 확인해서 할당한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-04",
+    "unitTitle": "교착 조건",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-05-01",
+    "topic": "os",
+    "prompt": "나중에 넣은 것이 먼저 나오는 구조는?",
+    "answers": [
+      "스택"
+    ],
+    "code": "",
+    "explanation": "스택은 LIFO다.",
+    "hint": "스택은 LIFO다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-05",
+    "unitTitle": "스택과 큐",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-05-02",
+    "topic": "os",
+    "prompt": "먼저 넣은 것이 먼저 나오는 구조는?",
+    "answers": [
+      "큐"
+    ],
+    "code": "",
+    "explanation": "큐는 FIFO다.",
+    "hint": "큐는 FIFO다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-05",
+    "unitTitle": "스택과 큐",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-05-03",
+    "topic": "os",
+    "prompt": "스택에 A 다음 B를 넣으면 먼저 꺼내는 것은?",
+    "answers": [
+      "B"
+    ],
+    "code": "",
+    "explanation": "마지막에 넣은 B를 먼저 꺼낸다.",
+    "hint": "마지막에 넣은 B를 먼저 꺼낸다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-05",
+    "unitTitle": "스택과 큐",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-06-01",
+    "topic": "os",
+    "prompt": "아이콘·메뉴로 조작하는 인터페이스 약어는?",
+    "answers": [
+      "GUI"
+    ],
+    "code": "",
+    "explanation": "Graphical User Interface다.",
+    "hint": "Graphical User Interface다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-06",
+    "unitTitle": "인터페이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-06-02",
+    "topic": "os",
+    "prompt": "명령어를 입력하는 인터페이스 약어는?",
+    "answers": [
+      "CLI"
+    ],
+    "code": "",
+    "explanation": "Command Line Interface다.",
+    "hint": "Command Line Interface다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-06",
+    "unitTitle": "인터페이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-06-03",
+    "topic": "os",
+    "prompt": "웹 화면 기반 인터페이스 약어는?",
+    "answers": [
+      "WUI"
+    ],
+    "code": "",
+    "explanation": "Web User Interface다.",
+    "hint": "Web User Interface다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-06",
+    "unitTitle": "인터페이스",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-07-01",
+    "topic": "os",
+    "prompt": "산출물의 변경·버전·이력 관리 활동은?",
+    "answers": [
+      "형상관리",
+      "형상 관리"
+    ],
+    "code": "",
+    "explanation": "단순 백업보다 넓은 관리 활동이다.",
+    "hint": "단순 백업보다 넓은 관리 활동이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-07",
+    "unitTitle": "형상관리와 배포",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-07-02",
+    "topic": "os",
+    "prompt": "소스 등을 실행·배포 가능한 산출물로 만드는 과정은?",
+    "answers": [
+      "빌드"
+    ],
+    "code": "",
+    "explanation": "빌드 결과물을 배포에 사용한다.",
+    "hint": "빌드 결과물을 배포에 사용한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-07",
+    "unitTitle": "형상관리와 배포",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-07-03",
+    "topic": "os",
+    "prompt": "산출물을 운영 환경에 적용하는 과정은?",
+    "answers": [
+      "배포"
+    ],
+    "code": "",
+    "explanation": "배포 후에는 정상 동작도 확인한다.",
+    "hint": "배포 후에는 정상 동작도 확인한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-07",
+    "unitTitle": "형상관리와 배포",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-08-01",
+    "topic": "os",
+    "prompt": "SQL 구문에 사용자 입력이 끼어드는 공격은?",
+    "answers": [
+      "SQL Injection",
+      "SQL 삽입"
+    ],
+    "code": "",
+    "explanation": "SQL 구문의 의미를 바꾸는 공격이다.",
+    "hint": "SQL 구문의 의미를 바꾸는 공격이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-08",
+    "unitTitle": "웹 공격과 방어",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-08-02",
+    "topic": "os",
+    "prompt": "악성 스크립트가 사용자 브라우저에서 실행되는 공격은?",
+    "answers": [
+      "XSS"
+    ],
+    "code": "",
+    "explanation": "Cross-Site Scripting이다.",
+    "hint": "Cross-Site Scripting이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-08",
+    "unitTitle": "웹 공격과 방어",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-08-03",
+    "topic": "os",
+    "prompt": "웹 공격을 탐지·차단하는 방화벽 약어는?",
+    "answers": [
+      "WAF"
+    ],
+    "code": "",
+    "explanation": "Web Application Firewall이다.",
+    "hint": "Web Application Firewall이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-08",
+    "unitTitle": "웹 공격과 방어",
+    "supplement": false
+  },
+  {
+    "id": "MP-OS-X01-01",
+    "topic": "os",
+    "prompt": "실행 중인 프로그램을 부르는 용어는?",
+    "answers": [
+      "프로세스"
+    ],
+    "code": "",
+    "explanation": "프로그램이 실행되는 상태다.",
+    "hint": "프로그램이 실행되는 상태다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X01-02",
+    "topic": "os",
+    "prompt": "프로세스 안의 실행 흐름은?",
+    "answers": [
+      "스레드"
+    ],
+    "code": "",
+    "explanation": "한 프로세스에 여러 실행 흐름이 있을 수 있다.",
+    "hint": "한 프로세스에 여러 실행 흐름이 있을 수 있다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X01-03",
+    "topic": "os",
+    "prompt": "스레드들은 각자의 스택을 가지나요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "",
+    "explanation": "코드·데이터·힙은 공유하지만 스택과 실행 상태는 각자다.",
+    "hint": "코드·데이터·힙은 공유하지만 스택과 실행 상태는 각자다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X01-04",
+    "topic": "os",
+    "prompt": "남은 실행시간이 짧은 작업을 우선하는 선점 알고리즘은?",
+    "answers": [
+      "SRT"
+    ],
+    "code": "",
+    "explanation": "SJF의 비선점 방식과 구별한다.",
+    "hint": "SJF의 비선점 방식과 구별한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X01-05",
+    "topic": "os",
+    "prompt": "자원을 강제로 빼앗을 수 없다는 교착 필요조건은?",
+    "answers": [
+      "비선점"
+    ],
+    "code": "",
+    "explanation": "자원 소유자의 자발적 해제까지 기다린다.",
+    "hint": "자원 소유자의 자발적 해제까지 기다린다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X01-06",
+    "topic": "os",
+    "prompt": "한 자원을 동시에 여러 작업이 사용하지 못하는 교착 조건은?",
+    "answers": [
+      "상호 배제"
+    ],
+    "code": "",
+    "explanation": "독점 자원 사용이 필요한 조건이다.",
+    "hint": "독점 자원 사용이 필요한 조건이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X01",
+    "unitTitle": "프로세스와 자원",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-01",
+    "topic": "os",
+    "prompt": "웹 문서의 구조를 담당하는 것은? HTML / CSS",
+    "answers": [
+      "HTML"
+    ],
+    "code": "",
+    "explanation": "HTML은 구조, CSS는 스타일이다.",
+    "hint": "HTML은 구조, CSS는 스타일이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-02",
+    "topic": "os",
+    "prompt": "색·배치를 지정하는 것은? HTML / CSS",
+    "answers": [
+      "CSS"
+    ],
+    "code": "",
+    "explanation": "CSS는 표시 스타일을 지정한다.",
+    "hint": "CSS는 표시 스타일을 지정한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-03",
+    "topic": "os",
+    "prompt": "웹 화면의 동작을 담당하는 언어는?",
+    "answers": [
+      "JavaScript"
+    ],
+    "code": "",
+    "explanation": "이벤트와 동작을 구현한다.",
+    "hint": "이벤트와 동작을 구현한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-04",
+    "topic": "os",
+    "prompt": "CSS에서 #x는 id/class 중 무엇을 선택할까요?",
+    "answers": [
+      "id"
+    ],
+    "code": "",
+    "explanation": "#은 id, 점은 class 선택자다.",
+    "hint": "#은 id, 점은 class 선택자다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-05",
+    "topic": "os",
+    "prompt": "CSS에서 .x는 id/class 중 무엇을 선택할까요?",
+    "answers": [
+      "class"
+    ],
+    "code": "",
+    "explanation": "여러 요소를 묶는 class를 선택한다.",
+    "hint": "여러 요소를 묶는 class를 선택한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-06",
+    "topic": "os",
+    "prompt": "이미지의 대체 텍스트는 접근성에 도움이 될까요? 예/아니오",
+    "answers": [
+      "예"
+    ],
+    "code": "",
+    "explanation": "이미지를 보지 못하는 경우에도 의미를 전달한다.",
+    "hint": "이미지를 보지 못하는 경우에도 의미를 전달한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-07",
+    "topic": "os",
+    "prompt": "조직이 자체 인프라를 구축·운영하는 방식은?",
+    "answers": [
+      "온프레미스"
+    ],
+    "code": "",
+    "explanation": "조직이 직접 운영하는 환경이다.",
+    "hint": "조직이 직접 운영하는 환경이다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  },
+  {
+    "id": "MP-OS-X02-08",
+    "topic": "os",
+    "prompt": "컨테이너와 가상머신은 같은 개념일까요? 예/아니오",
+    "answers": [
+      "아니오"
+    ],
+    "code": "",
+    "explanation": "Docker 등의 컨테이너와 가상머신은 구별한다.",
+    "hint": "Docker 등의 컨테이너와 가상머신은 구별한다.",
+    "mode": "term",
+    "kind": "micro",
+    "unitId": "U-OS-X02",
+    "unitTitle": "화면과 운영 환경",
+    "supplement": true
+  }
+]

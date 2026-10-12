@@ -1,0 +1,13 @@
+{
+  "name": "practical-one-step",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": ".venv/bin/python scripts/dev_server.py",
+    "test": "node --test tests/tutor.test.mjs && .venv/bin/python -m unittest discover -s tests"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
