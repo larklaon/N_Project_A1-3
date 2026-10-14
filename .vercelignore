@@ -1,5 +1,7 @@
 .venv
 .git
+.env
+.env.*
 node_modules
 docs
 tests
