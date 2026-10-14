@@ -1,0 +1,11 @@
+{
+  "case": "wrong-answer",
+  "input": "4입니다",
+  "status": 200,
+  "elapsed_seconds": 3.44,
+  "response": {
+    "text": "아쉽지만 4는 아닙니다. 대입 연산자 `=`는 오른쪽의 값을 왼쪽 변수에 그대로 저장합니다. 코드에서 `=` 오른쪽에 어떤 숫자가 있는지 다시 확인해 볼까요?",
+    "outcome": "retry",
+    "provider": "gemini"
+  }
+}

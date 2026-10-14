@@ -1,0 +1,31 @@
+{
+  "verified_date": "2026-10-14",
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "normal_answer": {
+    "input": "3입니다",
+    "status": 200,
+    "elapsed_seconds": 3.24,
+    "response": {
+      "text": "정답입니다! 대입 연산자(=)를 통해 변수 x에 3이 잘 저장되었습니다. 다음 문제로 넘어가 볼까요?",
+      "outcome": "correct",
+      "provider": "gemini"
+    }
+  },
+  "wrong_answer": {
+    "case": "wrong-answer",
+    "input": "4입니다",
+    "status": 200,
+    "elapsed_seconds": 3.44,
+    "response": {
+      "text": "아쉽지만 4는 아닙니다. 대입 연산자 `=`는 오른쪽의 값을 왼쪽 변수에 그대로 저장합니다. 코드에서 `=` 오른쪽에 어떤 숫자가 있는지 다시 확인해 볼까요?",
+      "outcome": "retry",
+      "provider": "gemini"
+    }
+  },
+  "browser_hint": "대입 연산자(=)는 오른쪽에 있는 값을 왼쪽 변수에 저장하는 역할을 합니다. 그렇다면 변수 x에는 어떤 값이 저장될까요?",
+  "browser_followup": "정답입니다! = 연산자를 통해 오른쪽의 값 3이 변수 x에 잘 저장되었습니다.",
+  "empty_input_status": 400,
+  "credentials_included": false,
+  "deployed_verification": false
+}

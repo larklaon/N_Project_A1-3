@@ -53,7 +53,9 @@ class ApiTests(unittest.TestCase):
             self.assertEqual(result["provider"], "gemini")
             self.assertIn("generateContent", post.call_args.args[0])
             self.assertEqual(post.call_args.kwargs["headers"]["x-goog-api-key"], "test-only")
-            self.assertIn("responseFormat", post.call_args.kwargs["json"]["generationConfig"])
+            output_format = post.call_args.kwargs["json"]["generationConfig"]["responseFormat"]["text"]
+            self.assertEqual(output_format["mimeType"], "APPLICATION_JSON")
+            self.assertEqual(output_format["schema"]["required"], ["text", "outcome"])
             self.assertFalse(post.call_args.kwargs["allow_redirects"])
 
     def test_openai_completed_and_structured_output(self):

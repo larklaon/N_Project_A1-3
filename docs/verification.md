@@ -1,6 +1,6 @@
 # 검증 기록
 
-검증일: 2026-10-12 (Asia/Seoul). 대상: 이 저장소의 로컬 구현.
+초기 검증일: 2026-10-12. 실제 Gemini 검증 추가: 2026-10-14 (Asia/Seoul). 대상: 이 저장소의 로컬 구현.
 
 ## 자동 검증
 
@@ -46,8 +46,28 @@
 
 ## 아직 검증하지 않은 것
 
-- Gemini/OpenAI API 키를 사용한 실제 모델 응답.
-- GitHub 업로드와 커밋 이력.
+- OpenAI API 키를 사용한 실제 모델 응답. Gemini는 아래 추가 검증에서 확인했다.
+- 이번 API 수정본의 최종 커밋·푸시. 기존 로컬 커밋과 원격 추적 브랜치는 확인했다.
 - Vercel 실제 배포 및 배포 URL에서의 동작.
 
 위 항목이 완료되기 전에는 과제의 전체 제출 조건을 모두 충족했다고 표시하지 않는다.
+
+## 2026-10-14 실제 Gemini API 검증
+
+사용자가 로컬 `.env`에 입력한 키를 서버에서 읽어 실제 요청했다. 키 값은 출력하거나 증빙 파일에 저장하지 않았다. 모델은 `gemini-3.8-flash`이며, 정상 응답은 모의 데이터가 아니다.
+
+첫 요청은 Gemini의 400 응답으로 실패했다. 원인은 `generationConfig.responseFormat.text.mimeType`에 MIME 문자열 `application/json`을 넣은 것이었다. 이 REST 필드는 enum `APPLICATION_JSON`을 요구하므로 값을 수정하고 자동 테스트에 해당 규격 검증을 보강했다. [공식 API 규격](https://ai.google.dev/api/generate-content#TextResponseFormat)을 확인했고, 수정 후 실제 API가 200 응답을 반환했다.
+
+| 검증 | 실제 결과 |
+| --- | --- |
+| `3입니다` — 문장형 정답 | HTTP 200, `outcome=correct`, 3.24초. 한국어 대입 연산 설명 반환 |
+| `4입니다` — 오답 | HTTP 200, `outcome=retry`, 3.44초. 오답 피드백·힌트 반환 |
+| 브라우저에서 힌트만 요청 | 정답을 직접 공개하지 않는 대입 연산 힌트가 화면에 표시됨 |
+| 같은 대화에서 `3입니다`로 답변 | 기존 힌트 대화와 함께 정답 확인 응답 표시. 홈의 답 확인 문항 수가 1로 반영됨 |
+| 빈 입력 | HTTP 400, 입력 안내. 코드의 입력 검증 단계에서 외부 호출 전에 거부 |
+| 공개 HTML/JS/문항 데이터 | Gemini 키 포함 없음. 로컬 `.env` 주소는 HTTP 404 |
+| 수정 후 `npm test` | JavaScript 6개 + Python 6개, 총 12개 통과 |
+
+브라우저 검증에는 포트 43126의 별도 origin을 사용해 기존 포트 43125의 개인 학습 기록을 변경하지 않았다. 테스트 질문·응답만 해당 검증용 브라우저 영역에 저장했다.
+
+증빙: `evidence/gemini-live-hint.jpg`, `evidence/gemini-live-conversation.jpg`, `evidence/gemini-wrong-answer.json`. 위 자료는 로컬 실제 API 검증이며 공개 배포 검증을 의미하지 않는다.

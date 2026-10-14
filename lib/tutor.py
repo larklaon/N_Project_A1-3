@@ -98,7 +98,7 @@ def call_gemini(q, messages):
          "contents": [{"role": "model" if m["role"] == "assistant" else "user",
                        "parts": [{"text": m["content"]}]} for m in messages],
          "generationConfig": {"maxOutputTokens": 2048, "responseFormat": {
-             "text": {"mimeType": "application/json", "schema": SCHEMA}}}})
+             "text": {"mimeType": "APPLICATION_JSON", "schema": SCHEMA}}}})
     try:
         return "".join(p.get("text", "") for p in data["candidates"][0]["content"]["parts"]
                        if not p.get("thought"))
