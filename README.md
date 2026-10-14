@@ -17,8 +17,86 @@
 | 기본 AI | Gemini API |
 | 추가 AI | OpenAI API |
 | 기록 저장 | 사용자의 브라우저 내부 저장소 `localStorage` |
-| GitHub | [N_Project_A1-3 저장소](https://github.com/larklaon/N_Project_A1-3) — 실제 Gemini API 검증을 포함한 수정본 `af70463` 업로드 완료 |
+| GitHub | [N_Project_A1-3 저장소](https://github.com/larklaon/N_Project_A1-3) — 구현 코드·문서·증빙을 `main`에 업로드 |
 | 공개 배포 URL | [실기 한 걸음 — Vercel](https://n-project-a1-3.vercel.app/) |
+
+## 과제 제출 안내
+
+**과제명: AI 웹 개발 — 내 아이디어를 현실로, AI 웹 서비스 빌딩**
+
+이 README를 제출 문서로 사용합니다. 아래에서 필수 제출물 5종을 열어볼 수 있으며, 서비스 목적·화면 구성·코드 구조·AI 처리 흐름·실행 및 배포 방법은 본문에 설명했습니다. 검증 기준일은 **2026-10-14**입니다.
+
+| 필수 제출물 | 제출 내용과 확인 링크 |
+| --- | --- |
+| ① 배포된 웹 서비스 | [Vercel 공개 서비스](https://n-project-a1-3.vercel.app/) — 로그인 없이 사용, 5개 메뉴, 모바일 대응, 실제 Gemini API 기능 |
+| ② GitHub 저장소 | [프로젝트 코드](https://github.com/larklaon/N_Project_A1-3), [커밋 이력](https://github.com/larklaon/N_Project_A1-3/commits/main/) — `index.html`·`css/`·`js/` 프론트와 Python `api/` 백엔드 분리 |
+| ③ README.md | 이 문서 — 서비스 소개, 기술 스택, 구조, 실행·배포 방법, 공개 URL, 환경 변수 설정, 발표 설명 |
+| ④ 서비스 기획서 | [서비스 기획서](docs/service-plan.md) — 목적, 타겟 사용자, 5개 섹션, 핵심 기능, AI 입력·출력·실패 처리 기준 |
+| ⑤ 증빙 자료 | 아래 화면 증빙 3종과 [AI 코딩 도구 사용 기록](docs/ai-coding-log.md), [상세 검증 기록](docs/verification.md) |
+
+### 평가자가 직접 확인하는 순서
+
+1. [공개 서비스](https://n-project-a1-3.vercel.app/)에서 **학습 홈 → 한 질문씩 배우기 → 단답 연습 → 다시 볼 질문 → 학습실 소개** 메뉴를 확인합니다. 모바일에서도 같은 주소로 접속할 수 있습니다.
+2. **한 질문씩 배우기**에서 AI 연결을 **Gemini · 기본**으로 두고 “힌트만 알려주세요. 정답은 먼저 말하지 말아주세요.”를 입력한 뒤 보내기를 누릅니다. Python 서버가 실제 Gemini API를 호출하고 응답을 대화에 표시합니다.
+3. 이어서 자신의 답이나 “예시로 쉽게 설명해 주세요.”를 보내 대화가 이어지는지 확인합니다. **내 답 → 답 확인하기**는 등록 정답 비교 기능이고, **선생님에게 보내기**가 외부 AI 연동 기능입니다.
+
+서비스 방문자는 API 키를 입력할 필요가 없습니다. 운영자가 Vercel 서버 환경 변수에 등록한 키로 요청하며, 키 값은 저장소·README·화면 증빙에 포함하지 않았습니다. OpenAI는 추가 어댑터를 구현했으며, 실제 모델 동작 검증은 기본 제공자인 Gemini로 수행했습니다.
+
+### 서비스 화면 증빙
+
+다음 이미지는 **로컬 실행이 아닌 공개 Vercel 서비스**에서 촬영했습니다. 접힌 항목을 열면 이 README 안에서 바로 확인할 수 있습니다.
+
+<details>
+<summary>① 데스크톱 화면 — 1440 × 1000에서 학습 홈 확인</summary>
+
+![공개 서비스의 데스크톱 학습 홈](docs/evidence/vercel-desktop-home.jpg)
+
+</details>
+
+<details>
+<summary>② 모바일 화면 — 390 × 844에서 반응형 학습 화면 확인</summary>
+
+<img src="docs/evidence/vercel-mobile-study.jpg" alt="공개 서비스의 모바일 학습 화면과 실제 AI 대화" width="390">
+
+</details>
+
+<details>
+<summary>③ AI 기능 동작 — Gemini 힌트 요청과 이어지는 정답 응답</summary>
+
+![공개 서비스에서 실제 Gemini가 반환한 힌트와 정답 피드백](docs/evidence/vercel-ai-conversation.jpg)
+
+입력: “힌트만 알려주세요. 정답은 먼저 말하지 말아주세요.” → 대입 연산의 힌트가 표시됩니다. 이어서 “3입니다” → 정답 설명이 표시됩니다. 두 응답 모두 실제 API 응답입니다.
+
+</details>
+
+[배포 성공 화면](docs/evidence/vercel-deployment-success.jpg), [공개 모바일 홈](docs/evidence/vercel-mobile-home.jpg), [실제 HTTP 요청·응답 기록](docs/evidence/vercel-live-verification.json)도 저장소에 포함했습니다.
+
+### AI 코딩 도구 사용 증빙
+
+AI 코딩 도구는 **Codex**를 사용했습니다. 아래는 실제 대화 중 구현 방향을 결정한 사용자 메시지의 발췌입니다.
+
+> “아니 진짜 목업으로 하라는 이야기가 아니라, 진짜 정보가 안들어가도 된다는 말이었어 나는...”
+>
+> “음 그렇게 구조를 나눠야 되면, 그냥 api로만 동작되게 해줘.”
+>
+> “기본은 제미니로 둬줘!!”
+
+이 지시에 따라 창작 데이터를 사용하되 실제 기능을 구현하고, Python API와 제공자별 어댑터를 분리했습니다. 실제 Gemini 테스트에서 구조화 응답의 `mimeType` 값 때문에 요청이 실패했고, 공식 규격에 맞게 `APPLICATION_JSON`으로 수정한 뒤 정상 응답과 화면 표시를 확인했습니다. [대화 발췌와 작업 과정](docs/ai-coding-log.md), [오류 원인·수정·재검증 기록](docs/verification.md)에 자세한 내용을 정리했습니다.
+
+### 필수 기능 검증 결과
+
+| 과제 조건 | 구현 및 확인 결과 |
+| --- | --- |
+| 3개 이상 페이지/섹션과 메뉴 이동 | 5개 해시 섹션, 공개 주소에서 전체 메뉴 이동 확인 |
+| 바닐라 프론트와 Python Serverless Functions | HTML/CSS/JS + `api/chat.py`, `requirements.txt`, Vercel 배포 |
+| 모바일 반응형 | 데스크톱 1440×1000·모바일 390×844 확인, 가로 넘침 없음 |
+| AI 입력 → 실제 결과 출력 | 기본 Gemini 힌트·이어지는 답변을 공개 화면에서 확인 |
+| 실패 안내 | 빈 입력은 HTTP 400과 입력 안내; API 오류·이용 한도·타임아웃·취소 처리 구현 및 테스트 |
+| 키 보호 | 서버 환경 변수 사용, 공개 HTML/JS/문항에 키 없음, 공개 `/.env`는 HTTP 404 |
+| 생성한 데이터 사용 | 창작 문항 391개, 기출 원문·출판사 PDF·원본 개인 학습 기록 미포함 |
+| 문서와 증빙 | README, 기획서, 화면 3종, AI 코딩 대화 발췌 준비 |
+
+자동 테스트는 JavaScript 6개와 Python 6개, **총 12개 통과**했습니다. 제출물별 상태는 [제출 체크리스트](docs/submission-checklist.md), 검증 범위와 미검증 항목은 [검증 기록](docs/verification.md)에서 확인할 수 있습니다.
 
 ## README를 읽는 순서
 
@@ -573,17 +651,7 @@ node --test tests/tutor.test.mjs
 
 브라우저에서는 1440×1000 데스크톱과 390×844 모바일, 메뉴 이동, 단답 확인, 복습 등록, 새로고침 복원, API 미설정 안내를 확인했습니다. 공개 Vercel URL에서도 두 화면 크기와 5개 메뉴, 단답 정답 확인, 복습 등록, 새로고침 복원, 실제 Gemini 대화를 확인했습니다. 원본 자료실 파일 261개는 작업 전후 해시가 같았습니다. 자세한 내용은 [검증 기록](docs/verification.md)에 있습니다.
 
-### 필수 제출 패키지 5종
-
-| 제출물 | 제출 위치·내용 | 상태 |
-| --- | --- | --- |
-| 배포된 웹 서비스 | [공개 Vercel URL](https://n-project-a1-3.vercel.app/) — 5개 메뉴·반응형·Python AI API | 완료 |
-| GitHub 저장소 | [코드와 커밋 이력](https://github.com/larklaon/N_Project_A1-3) — 프론트와 `api/` 분리 | 완료 |
-| README | 이 문서 — 서비스·구조·실행·환경 변수·배포·발표 설명 | 완료 |
-| 서비스 기획서 | [기획서](docs/service-plan.md) — 목적·사용자·구성·AI 입출력·실패 기준 | 완료 |
-| 증빙 자료 | [배포 데스크톱](docs/evidence/vercel-desktop-home.jpg), [배포 모바일](docs/evidence/vercel-mobile-home.jpg), [실제 AI 대화](docs/evidence/vercel-ai-conversation.jpg), [AI 코딩 대화 발췌](docs/ai-coding-log.md) | 완료 |
-
-[제출 체크리스트](docs/submission-checklist.md)에서 완료 여부를 관리합니다. `api-not-configured.jpg`는 오류 처리 증빙이며 정상 AI 응답 증빙으로 제출하지 않습니다.
+필수 제출물 5종과 공개 화면 증빙은 문서 상단의 [과제 제출 안내](#과제-제출-안내)에 모았습니다. [제출 체크리스트](docs/submission-checklist.md)에서 완료 여부를 관리합니다. `api-not-configured.jpg`는 오류 처리 증빙이며 정상 AI 응답 증빙으로 제출하지 않습니다.
 
 ## 13. 타인에게 설명할 때 사용할 발표문과 질문 답변
 
