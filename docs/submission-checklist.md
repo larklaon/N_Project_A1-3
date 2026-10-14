@@ -9,9 +9,9 @@
 - [x] README와 서비스 기획서
 - [x] Gemini API 키 설정 후 실제 AI 입력 → 응답·화면 표시 확인 (2026-10-14)
 - [x] 최종 API 수정본을 GitHub에 커밋·푸시 완료 (2026-10-14, `af70463`)
-- [ ] Vercel 배포 URL 기록
-- [ ] 배포 URL에서 모바일·메뉴·AI 동작 재검증
-- [ ] 배포된 서비스의 데스크톱 + 모바일 + 실제 AI 응답 증빙
+- [x] Vercel 배포 URL 기록: https://n-project-a1-3.vercel.app/
+- [x] 배포 URL에서 모바일·5개 메뉴·실제 Gemini 동작 재검증 (2026-10-14)
+- [x] 배포된 서비스의 데스크톱 + 모바일 + 실제 AI 응답 증빙 (`evidence/vercel-*.jpg`)
 - [x] AI 코딩 도구 실제 대화 발췌 기록 (`ai-coding-log.md`)
 
 로컬 화면이나 모의 제공자 응답 테스트는 배포/실제 AI 응답 증빙으로 대체하지 않습니다.

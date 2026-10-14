@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-14",
+  "url": "https://n-project-a1-3.vercel.app",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/data/questions.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "path": "/.env",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "scenario": "correct",
+      "status": 200,
+      "seconds": 3.58,
+      "response": {
+        "text": "정답입니다! 후위 증가 연산자(x++)는 현재 값인 3을 a에 대입한 후 x를 4로 증가시키고, 전위 증가 연산자(++x)는 x를 5로 먼저 증가시킨 뒤 b에 대입하므로 결과는 '3 5 5'가 됩니다. 다음 문제로 넘어가 볼까요?",
+        "outcome": "correct",
+        "provider": "gemini"
+      }
+    },
+    {
+      "scenario": "blank",
+      "status": 400,
+      "seconds": 0.25,
+      "response": {
+        "error": "답이나 궁금한 점을 2,000자 이내로 입력해 주세요."
+      }
+    }
+  ],
+  "browserChecks": {
+    "authenticated": false,
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "horizontalOverflow": false,
+    "menusChecked": [
+      "home",
+      "study",
+      "practice",
+      "review",
+      "about"
+    ],
+    "geminiHintAndFollowup": true,
+    "shortAnswer": "GUI → 정답",
+    "reviewItemsAfterReload": 1,
+    "confirmedQuestionsAfterReload": 2,
+    "consoleErrors": 0
+  }
+}

@@ -1,6 +1,6 @@
 # 검증 기록
 
-초기 검증일: 2026-10-12. 실제 Gemini 검증 추가: 2026-10-14 (Asia/Seoul). 대상: 이 저장소의 로컬 구현.
+초기 검증일: 2026-10-12. 실제 Gemini·Vercel 공개 검증 추가: 2026-10-14 (Asia/Seoul). 대상: 이 저장소의 로컬 구현과 https://n-project-a1-3.vercel.app/ .
 
 ## 자동 검증
 
@@ -47,10 +47,7 @@
 ## 아직 검증하지 않은 것
 
 - OpenAI API 키를 사용한 실제 모델 응답. Gemini는 아래 추가 검증에서 확인했다.
-- 이번 API 수정본의 최종 커밋·푸시. 기존 로컬 커밋과 원격 추적 브랜치는 확인했다.
-- Vercel 실제 배포 및 배포 URL에서의 동작.
-
-위 항목이 완료되기 전에는 과제의 전체 제출 조건을 모두 충족했다고 표시하지 않는다.
+OpenAI는 추가 선택지이며 필수 AI 연동은 실제 Gemini로 검증했다. GitHub 푸시와 Vercel 공개 검증은 아래 기록에서 완료했다.
 
 ## 2026-10-14 실제 Gemini API 검증
 
@@ -71,3 +68,37 @@
 브라우저 검증에는 포트 43126의 별도 origin을 사용해 기존 포트 43125의 개인 학습 기록을 변경하지 않았다. 테스트 질문·응답만 해당 검증용 브라우저 영역에 저장했다.
 
 증빙: `evidence/gemini-live-hint.jpg`, `evidence/gemini-live-conversation.jpg`, `evidence/gemini-wrong-answer.json`. 위 자료는 로컬 실제 API 검증이며 공개 배포 검증을 의미하지 않는다.
+
+## 2026-10-14 Vercel 공개 배포 검증
+
+공개 URL: https://n-project-a1-3.vercel.app/ . 프로젝트: `Elfnein / n-project-a1-3`, Hobby. GitHub 앱은 `larklaon/N_Project_A1-3` 한 개만 허용했다. API 수정 커밋 `af70463`과 배포 설정 커밋 `6a62028`을 푸시했고, 첫 배포는 `6a62028`로 성공했다. 문서·증빙 갱신도 `main`에 올린다.
+
+Vercel 환경 변수 `AI_ENABLED`, `DEFAULT_AI_PROVIDER`, `GEMINI_MODEL`, `GEMINI_API_KEY`를 Production과 Preview에 등록했다. 키 값은 증빙이나 저장소에 포함하지 않았다.
+
+| 검증 | 결과 |
+| --- | --- |
+| 인증 없는 공개 접속 | HTTP 200, Vercel 로그인 없이 학습 화면 로드 |
+| 문항 데이터 | HTTP 200, 창작 문항 로드 |
+| 공개 `.env` 경로 | HTTP 404 |
+| Python API 정답 요청 | `WB-C-01`에 `3 5 5입니다` → HTTP 200, `correct`, 약 3.58초, 실제 Gemini 설명 |
+| Python API 빈 입력 | HTTP 400, 입력 안내 |
+| 브라우저 AI 힌트 | `MP-C-01-01`에서 힌트만 요청 → 정답 선공개 없이 대입 연산 설명 |
+| 이어지는 대화 | `3입니다` → 실제 Gemini 정답 응답, 대화에 표시 |
+| 5개 메뉴 | 홈·단계별 학습·단답 연습·복습·소개로 이동 확인 |
+| 단답 연습 | 12문항 생성, GUI 답 제출 후 정답과 해설 표시 |
+| 복습·진도 저장 | 질문 1개 복습 등록, 새로고침 후 답 확인 2개·복습 1개 복원 |
+| 데스크톱 1440×1000 | 가로 넘침 없음, 좌측 메뉴·학습/AI 패널 표시 |
+| 모바일 390×844 | 가로 넘침 없음, 상단 메뉴·한 열 학습 패널 표시 |
+| 브라우저 로그 | 확인 시 JavaScript 오류 없음 |
+| 최종 `npm test` | JavaScript 6개 + Python 6개, 총 12개 통과 |
+
+별도의 로그인 없는 검증 브라우저에서 생성한 대화와 진도만 사용했다. 사용자의 원본 학습실이나 개인 학습 기록은 변경하지 않았다.
+
+| 공개 배포 증빙 | 내용 |
+| --- | --- |
+| `evidence/vercel-deployment-success.jpg` | Vercel 배포 성공 화면 |
+| `evidence/vercel-desktop-home.jpg` | 공개 데스크톱 홈 |
+| `evidence/vercel-mobile-home.jpg` | 공개 모바일 홈 |
+| `evidence/vercel-mobile-study.jpg` | 공개 모바일 학습·실제 AI 대화 |
+| `evidence/vercel-ai-conversation.jpg` | 공개 서비스의 실제 Gemini 힌트·정답 대화 |
+| `evidence/vercel-live-verification.json` | 공개 URL·HTTP 상태·실제 AI 응답 기록 |
